@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ominifix — Self-Healing RPA Framework</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/home.css"/>
+<link rel="stylesheet" href="css/about.css"/>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <div class="logo-mark">
+        <svg viewBox="0 0 20 20"><path d="M10 2L3 7v6l7 5 7-5V7L10 2zm0 2.3l5 3.5v4.4l-5 3.5-5-3.5V7.8L10 4.3z"/><circle cx="10" cy="10" r="2.2"/></svg>
+      </div>
+      <span class="logo-name">Omini<span>fix</span></span>
+    </a>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#documentations">Documentations</a></li>
+      <li><a href="#milestones">Milestones</a></li>
+      <li><a href="#domain">Domain</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#cta" class="btn btn-primary nav-cta">Get Started</a>
+  </div>
+</nav>
+
+
+<!-- Home section -->
+<section id="home" class="home-section">
+  
+</section>
+
+
+<!--About section -->
+<section id="about" class="about-section">
+    <div class="about-grid">
+  <article class="about-card">
+    <h3>Why Ominifix Exists</h3>
+    <p>
+      Modern web applications evolve continuously. Small frontend updates can cause major downstream automation failures. Teams then spend time diagnosing logs, editing selectors, redeploying scripts, and revalidating entire flows. Ominifix was created to shift this model from manual recovery to intelligent auto-recovery, minimizing downtime and protecting business operations.
+    </p>
+  </article>
+
+  <article class="about-card">
+    <h3>What Makes It Different</h3>
+    <p>
+      The framework does not rely on a single fallback selector. It evaluates multiple healing strategies in parallel, scores alternatives using machine-learning confidence, validates candidates through contextual signals, and returns structured healing decisions. This multi-strategy approach makes recovery more robust than static rule-only systems.
+    </p>
+  </article>
+
+  <article class="about-card">
+    <h3>Core Recovery Intelligence</h3>
+    <ul>
+      <li>Attribute similarity analysis across id, name, class, text, and tag changes</li>
+      <li>DOM structure matching to detect relocated or reshaped elements</li>
+      <li>XPath and CSS candidate regeneration from updated page context</li>
+      <li>Vision-assisted fallback using OpenCV template and edge matching</li>
+      <li>Confidence threshold gating to prevent unsafe auto-healing</li>
+    </ul>
+  </article>
+
+  <article class="about-card">
+    <h3>How The Platform Operates</h3>
+    <ul>
+      <li>A failure event is captured from a running bot</li>
+      <li>Context is sent to healing services via structured API payloads</li>
+      <li>Strategies generate and score replacement locators</li>
+      <li>Best candidate is selected only when reliability criteria are met</li>
+      <li>Results are returned to orchestrator and monitoring layers</li>
+      <li>Execution continues with reduced manual intervention</li>
+    </ul>
+  </article>
+</div>
+
+<div class="about-band">
+  <div class="about-band-left">
+    <h3>Architecture Designed for Enterprise Automation</h3>
+    <p>
+      Ominifix is implemented as a microservice-driven framework to support modular growth and distributed execution. Components such as locator intelligence, healing logic, orchestration, monitoring, and QA services can evolve independently while sharing consistent contracts. This architecture supports maintainability, observability, and gradual adoption across automation teams.
+    </p>
+  </div>
+  <div class="about-band-right">
+    <div class="stat">
+      <span class="stat-value">Hybrid</span>
+      <span class="stat-label">DOM + Vision + ML recovery model</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">API-First</span>
+      <span class="stat-label">Service integration with structured JSON contracts</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">Scalable</span>
+      <span class="stat-label">Distributed orchestration for multiple bot workflows</span>
+    </div>
+  </div>
+</div>
+
+<div class="about-principles">
+  <h3>Engineering Principles</h3>
+  <div class="principles-grid">
+    <div class="principle">
+      <h4>Reliability Over Guessing</h4>
+      <p>Every healing action is scored, validated, and controlled by thresholds to reduce risky selector substitutions.</p>
+    </div>
+    <div class="principle">
+      <h4>Explainable Decisions</h4>
+      <p>Recovery outputs are structured with reasoning signals to support debugging, auditability, and team trust.</p>
+    </div>
+    <div class="principle">
+      <h4>Production Practicality</h4>
+      <p>Built for real automation pipelines with monitoring visibility, service integration, and operational resilience.</p>
+    </div>
+    <div class="principle">
+      <h4>Continuous Improvement</h4>
+      <p>Model-driven confidence and evaluation workflows enable data-informed improvements over time.</p>
+    </div>
+  </div>
+</div>
+
+<div class="about-cta">
+  <h3>Our Mission</h3>
+  <p>
+    To transform fragile script-based automation into adaptive, self-healing digital workers that remain stable under constant UI change, helping organizations improve continuity, reduce maintenance cost, and scale RPA with confidence.
+  </p>
+  <a href="#contact" class="about-btn">Talk to Our Team</a>
+</div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="#" style="margin-bottom:0.75rem;display:inline-flex">
+          <div class="logo-mark">
+            <svg viewBox="0 0 20 20" fill="white"><path d="M10 2L3 7v6l7 5 7-5V7L10 2zm0 2.3l5 3.5v4.4l-5 3.5-5-3.5V7.8L10 4.3z"/><circle cx="10" cy="10" r="2.2"/></svg>
+          </div>
+          <span class="logo-name" style="margin-left:10px">Omini<span>fix</span></span>
+        </a>
+        <p>An AI-enhanced self-healing RPA framework that detects UI changes, recovers broken locators, and keeps bots running with minimal human intervention.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#architecture">Architecture</a></li>
+          <li><a href="#showcase">Dashboard</a></li>
+          <li><a href="#">Changelog</a></li>
+          <li><a href="#">Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Developers</h4>
+        <ul>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Quick Start</a></li>
+          <li><a href="#">API Reference</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Integrations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Ominifix. All rights reserved.</span>
+      <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--ink-3)">v2.1.0 · Self-Healing RPA Framework</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function setActive(el,idx){
+  document.querySelectorAll('.cap-item').forEach(i=>i.classList.remove('active'));
+  el.classList.add('active');
+}
+
+const nav = document.querySelector('nav');
+
+function syncNavbarOnScroll(){
+  if(!nav) return;
+  nav.classList.toggle('scrolled', window.scrollY > 24);
+}
+
+window.addEventListener('scroll', syncNavbarOnScroll, { passive:true });
+window.addEventListener('load', syncNavbarOnScroll);
+syncNavbarOnScroll();
+</script>
+</body>
+</html>
