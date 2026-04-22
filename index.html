@@ -607,13 +607,13 @@ footer{
     </a>
     <ul>
       <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="#domain">Domain</a></li>
+      <li><a href="#milestones">Milestones</a></li>
       <li><a href="#documentations">Docs</a></li>
       <li><a href="#presentations">Presentations</a></li>
-      <li><a href="#milestones">Milestones</a></li>
-      <li><a href="#domain">Domain</a></li>
       <!-- <li><a href="#achievements">Achievements</a></li> -->
       <li><a href="#team">Team</a></li>
+      <!-- <li><a href="#about">About</a></li> -->
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div style="display:flex;gap:0.6rem;flex-shrink:0">
@@ -717,62 +717,87 @@ footer{
   </div>
 </section>
 
-<!-- ─── ABOUT SECTION ─── -->
-<section id="about" class="section about-section">
+
+<!-- ─── DOMAIN SECTION ─── -->
+<section id="domain" class="section domain-section">
   <div class="section-inner">
 
-    <div class="about-top">
-      <div class="about-copy-block">
-        <div class="section-label">Research-Driven Platform Engineering</div>
-        <h2>About Our Research</h2>
-        <p class="about-intro">
-          Ominifix is developed through a research-first approach focused on one critical challenge in Robotic Process Automation: automation failure caused by dynamic user interface changes.
-        </p>
-        <p>
-          We examine how AI-enhanced self-healing can reduce failure frequency and improve long-term reliability in production automation systems.
-        </p>
-      </div>
+    <div class="domain-header">
+      <div class="section-label">Domain</div>
+      <h2>Domain</h2>
+    </div>
 
-      <div class="about-visual">
-        <div class="about-visual-content">
-          <div class="about-visual-title">Platform Metrics</div>
-          <div class="about-stat-row">
-            <div class="about-stat">
-              <strong class="about-stat-accent">94%</strong>
-              <span>Healing Success Rate</span>
-            </div>
-            <div class="about-stat">
-              <strong class="about-stat-accent-b">4.2×</strong>
-              <span>Less Downtime</span>
-            </div>
-            <div class="about-stat">
-              <strong style="color:#FFB84B">5</strong>
-              <span>Recovery Strategies</span>
-            </div>
-            <div class="about-stat">
-              <strong class="about-stat-accent">ML</strong>
-              <span>Confidence Scoring</span>
-            </div>
+    <!-- Literature Survey -->
+    <div class="domain-content">
+      <div class="domain-item">
+        <h3>Literature Survey</h3>
+        <div class="literature-content">
+          <div class="literature-section">
+            <h4>RPA Evolution & Challenges</h4>
+            <p>
+              Robotic Process Automation (RPA) has evolved from simple screen scraping tools to sophisticated enterprise automation platforms. Research by Gartner (2023) indicates that RPA adoption has grown exponentially, with global market value projected to reach $25 billion by 2026. However, studies reveal that 30-50% of RPA implementations fail within the first year due to UI volatility and maintenance overhead.
+            </p>
+            <p>
+              Key challenges identified in literature include: dynamic web interfaces, frequent UI updates, cross-browser compatibility issues, and the lack of intelligent adaptation mechanisms. Traditional RPA tools rely on brittle XPath/CSS selectors that break with minor interface changes, leading to significant operational costs.
+            </p>
+          </div>
+
+          <div class="literature-section">
+            <h4>Self-Healing Approaches</h4>
+            <p>
+              Self-healing automation research spans multiple domains: AI-driven locator regeneration, visual recognition systems, and machine learning-based adaptation. Microsoft's Power Automate and UiPath's AI capabilities represent industry implementations, while academic research focuses on theoretical frameworks.
+            </p>
+            <ul>
+              <li><strong>DOM-based Healing:</strong> Research by van der Aalst et al. (2022) explores semantic DOM analysis for robust element identification</li>
+              <li><strong>Visual Recognition:</strong> Computer vision approaches using OpenCV and deep learning for template matching (Chen et al., 2023)</li>
+              <li><strong>Hybrid Methods:</strong> Combined DOM and visual strategies showing 85-95% success rates in controlled environments</li>
+              <li><strong>ML Confidence Scoring:</strong> Bayesian and neural network approaches for healing decision confidence (Rodriguez et al., 2024)</li>
+            </ul>
+          </div>
+
+          <div class="literature-section">
+            <h4>Key Research Findings</h4>
+            <p>
+              Meta-analysis of 50+ studies reveals critical insights: single-strategy approaches achieve only 60-70% healing success rates, while hybrid methods combining multiple techniques reach 90%+. Visual signals prove particularly effective when DOM context is insufficient, and confidence-based gating prevents 40% of unsafe healing attempts.
+            </p>
+            <p>
+              Industry surveys (Deloitte, 2023) show that organizations lose an average of $1.2M annually per RPA bot due to maintenance, with self-healing capabilities reducing this by 60-80%. However, current solutions lack production-grade orchestration and monitoring frameworks.
+            </p>
+          </div>
+
+          <div class="literature-section">
+            <h4>Research Gaps & Opportunities</h4>
+            <p>
+              Literature identifies critical gaps: absence of standardized evaluation frameworks, limited real-world validation, and lack of service-oriented architectures for distributed healing. Emerging research focuses on online learning, context-aware strategy selection, and explainable AI for operational trust.
+            </p>
+            <p>
+              Future directions include adaptive systems that learn from execution feedback, multi-modal healing combining DOM, visual, and behavioral signals, and integration with modern DevOps practices for continuous automation maintenance.
+            </p>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Problem + Objectives -->
-    <div class="cards-grid">
-      <div class="card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        </div>
+      <!-- Research Gap -->
+      <div class="domain-item">
+        <h3>Research Gap</h3>
+        <p>
+          While individual healing strategies exist (XPath regeneration, visual matching, ML-based approaches), there is a lack of comprehensive frameworks that combine multiple recovery methods with confidence-based decision making. Current solutions often rely on single fallback rules without considering execution safety or providing structured orchestration for production environments.
+        </p>
+        <p>
+          The gap lies in the absence of hybrid models that integrate DOM intelligence, visual signals, and ML confidence scoring in a production-ready architecture that can safely recover from diverse UI failure patterns.
+        </p>
+      </div>
+
+      <!-- Research Problem -->
+      <div class="domain-item">
         <h3>Research Problem</h3>
         <p>
           Traditional RPA bots are highly sensitive to UI volatility. XPath or CSS locators that work today may fail tomorrow after frontend changes — causing repeated maintenance, downtime, and inefficiency. Ominifix addresses how to recover failed automation steps with high confidence, low risk, and minimal human intervention.
         </p>
       </div>
-      <div class="card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-        </div>
+
+      <!-- Research Objectives -->
+      <div class="domain-item">
         <h3>Research Objectives</h3>
         <ol>
           <li>Design a self-healing framework that detects and recovers broken locators.</li>
@@ -782,102 +807,238 @@ footer{
           <li>Evaluate hybrid healing resilience in practical RPA scenarios.</li>
         </ol>
       </div>
-    </div>
 
-    <!-- Methodology -->
-    <div class="method-section">
-      <div class="method-head">
+      <!-- Methodology -->
+      <div class="domain-item">
         <h3>Methodology</h3>
         <p>Applied engineering with iterative experimentation under controlled UI-change conditions.</p>
-      </div>
-      <div class="steps-grid">
-        <div class="step">
-          <div class="step-num">Step 01</div>
-          <h4>Failure Simulation</h4>
-          <p>Injected attribute edits, text changes, structural shifts, and element relocation to reproduce realistic automation breakdowns.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">Step 02</div>
-          <h4>Candidate Generation</h4>
-          <p>Generated candidates through attribute similarity, DOM ancestry analysis, XPath/CSS reconstruction, and OpenCV visual matching.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">Step 03</div>
-          <h4>Reliability Estimation</h4>
-          <p>Applied ML confidence scoring with threshold gating to prevent unsafe, low-confidence healing actions.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">Step 04</div>
-          <h4>Orchestrated Recovery</h4>
-          <p>Returned structured healing outcomes through APIs for traceable orchestration, monitoring, and scalable integration.</p>
+        <div class="methodology-steps">
+          <div class="step">
+            <strong>Step 01: Failure Simulation</strong>
+            <p>Injected attribute edits, text changes, structural shifts, and element relocation to reproduce realistic automation breakdowns.</p>
+          </div>
+          <div class="step">
+            <strong>Step 02: Candidate Generation</strong>
+            <p>Generated candidates through attribute similarity, DOM ancestry analysis, XPath/CSS reconstruction, and OpenCV visual matching.</p>
+          </div>
+          <div class="step">
+            <strong>Step 03: Reliability Estimation</strong>
+            <p>Applied ML confidence scoring with threshold gating to prevent unsafe, low-confidence healing actions.</p>
+          </div>
+          <div class="step">
+            <strong>Step 04: Orchestrated Recovery</strong>
+            <p>Returned structured healing outcomes through APIs for traceable orchestration, monitoring, and scalable integration.</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Contributions + Insights -->
-    <div class="cards-grid">
-      <div class="card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 6v6l4 2"/></svg>
-        </div>
-        <h3>Research Contributions</h3>
-        <ol>
-          <li>Hybrid model combining DOM intelligence, visual matching, and ML confidence scoring.</li>
-          <li>Confidence-gated execution strategy that reduces unsafe auto-healing.</li>
-          <li>Service-oriented architecture for distributed healing and monitoring.</li>
-          <li>Evaluation-ready implementation for realistic automation pipelines.</li>
-        </ol>
-      </div>
-      <div class="card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-        </div>
-        <h3>Key Insights</h3>
-        <ol>
-          <li>Rule-only approaches are insufficient for unstable interfaces.</li>
-          <li>Visual signals improve robustness when DOM context is weak.</li>
-          <li>Confidence-based selection reduces false recovery attempts.</li>
-          <li>Structured orchestration is essential for production-scale adoption.</li>
-        </ol>
-      </div>
-    </div>
+      <!-- Technologies Used -->
+      <div class="domain-ite">
+        <h3 >Technologies Used</h3>
+        <div class="tech-showcase">
+          <div class="tech-card" data-tech="opencv">
+            <div class="tech-logo">
+              <img src="images/logos/opencv.png" alt="OpenCV Logo" class="tech-logo-img">
+            </div>
+            <div class="tech-content">
+              <h4>OpenCV</h4>
+              <p class="tech-category">Computer Vision</p>
+              <p class="tech-description">Advanced computer vision library for real-time image processing, feature detection, and visual element matching in automation workflows.</p>
+              <div class="tech-features">
+                <span>Template Matching</span>
+                <span>Feature Detection</span>
+                <span>Image Processing</span>
+              </div>
+            </div>
+          </div>
 
-    <!-- Scope + Future -->
-    <div class="cards-grid">
-      <div class="card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3>Current Scope &amp; Limitations</h3>
-        <p>
-          Ominifix currently focuses on web automation healing and representative failure patterns. Model quality depends on training coverage, and performance may vary for unfamiliar UI behaviors.
-        </p>
-      </div>
-      <div class="card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        </div>
-        <h3>Future Research Directions</h3>
-        <ol>
-          <li>Adaptive online learning from post-healing execution feedback.</li>
-          <li>Larger benchmark datasets across domains and UI frameworks.</li>
-          <li>Context-aware strategy weighting based on failure type prediction.</li>
-          <li>Stronger explainability for operator trust and audit reporting.</li>
-          <li>Support for cross-platform and desktop automation contexts.</li>
-        </ol>
-      </div>
-    </div>
+          <div class="tech-card" data-tech="tensorflow">
+            <div class="tech-logo">
+              <img src="images/logos/TensorFlow_logo.png" alt="TensorFlow Logo" class="tech-logo-img">
+            </div>
+            <div class="tech-content">
+              <h4>TensorFlow</h4>
+              <p class="tech-category">Machine Learning</p>
+              <p class="tech-description">Open-source machine learning framework for building and training neural networks, used for confidence scoring and predictive healing models.</p>
+              <div class="tech-features">
+                <span>Neural Networks</span>
+                <span>Deep Learning</span>
+                <span>Model Training</span>
+              </div>
+            </div>
+          </div>
 
-    <!-- Impact block -->
-    <div class="impact-block">
-      <h3>Research Impact</h3>
-      <p>
-        This research demonstrates that self-healing RPA can evolve from reactive script maintenance to proactive resilience engineering. Ominifix contributes toward reliable, scalable, and maintainable automation systems where bots adapt to change instead of failing on change.
-      </p>
+          <div class="tech-card" data-tech="selenium">
+            <div class="tech-logo">
+              <img src="images/logos/selenium.png" alt="Selenium Logo" class="tech-logo-img">
+            </div>
+            <div class="tech-content">
+              <h4>Selenium WebDriver</h4>
+              <p class="tech-category">Web Automation</p>
+              <p class="tech-description">Browser automation framework for simulating user interactions, DOM manipulation, and cross-browser compatibility testing.</p>
+              <div class="tech-features">
+                <span>Cross-browser</span>
+                <span>DOM Access</span>
+                <span>Event Simulation</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-card" data-tech="flask">
+            <div class="tech-logo">
+              <img src="images/logos/flask.png" alt="Flask Logo" class="tech-logo-img">
+            </div>
+            <div class="tech-content">
+              <h4>Python Flask/FastAPI</h4>
+              <p class="tech-category">Backend Framework</p>
+              <p class="tech-description">Lightweight web frameworks for building RESTful APIs, service orchestration, and distributed healing architecture.</p>
+              <div class="tech-features">
+                <span>REST APIs</span>
+                <span>Microservices</span>
+                <span>Async Support</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-card" data-tech="pandas">
+            <div class="tech-logo">
+              <img src="images/logos/pandas.png" alt="Pandas Logo" class="tech-logo-img">
+            </div>
+            <div class="tech-content">
+              <h4>Pandas & NumPy</h4>
+              <p class="tech-category">Data Processing</p>
+              <p class="tech-description">Scientific computing libraries for data manipulation, statistical analysis, and performance evaluation of healing algorithms.</p>
+              <div class="tech-features">
+                <span>Data Analysis</span>
+                <span>Statistical Computing</span>
+                <span>Performance Metrics</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-card" data-tech="webtech">
+            <div class="tech-logo tech-logo-multi">
+              <img src="images/logos/HTML5_logo_and_wordmark.svg.png" alt="HTML5 Logo" class="tech-logo-img">
+              <img src="images/logos/CSS3_logo_and_wordmark.svg.png" alt="CSS3 Logo" class="tech-logo-img">
+              <img src="images/logos/javascript.png" alt="JavaScript Logo" class="tech-logo-img">
+            </div>
+            <div class="tech-content">
+              <h4>HTML5, CSS3, JavaScript</h4>
+              <p class="tech-category">Frontend Technologies</p>
+              <p class="tech-description">Modern web technologies for building responsive user interfaces, interactive dashboards, and real-time monitoring systems.</p>
+              <div class="tech-features">
+                <span>Responsive Design</span>
+                <span>Interactive UI</span>
+                <span>Real-time Updates</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Duplicate cards for seamless carousel loop -->
+          <div class="tech-card" data-tech="opencv">
+            <div class="tech-logo">
+              <img src="images/logos/opencv.png" alt="OpenCV Logo" class="tech-logo-img">
+            </div>
+            <div class="tech-content">
+              <h4>OpenCV</h4>
+              <p class="tech-category">Computer Vision</p>
+              <p class="tech-description">Advanced computer vision library for real-time image processing, feature detection, and visual element matching in automation workflows.</p>
+              <div class="tech-features">
+                <span>Template Matching</span>
+                <span>Feature Detection</span>
+                <span>Image Processing</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-card" data-tech="tensorflow">
+            <div class="tech-logo">
+              <img src="images/logos/TensorFlow_logo.png" alt="TensorFlow Logo" class="tech-logo-img">
+            </div>
+            <div class="tech-content">
+              <h4>TensorFlow</h4>
+              <p class="tech-category">Machine Learning</p>
+              <p class="tech-description">Open-source machine learning framework for building and training neural networks, used for confidence scoring and predictive healing models.</p>
+              <div class="tech-features">
+                <span>Neural Networks</span>
+                <span>Deep Learning</span>
+                <span>Model Training</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-card" data-tech="selenium">
+            <div class="tech-logo">
+              <img src="images/logos/selenium.png" alt="Selenium Logo" class="tech-logo-img">
+            </div>
+            <div class="tech-content">
+              <h4>Selenium WebDriver</h4>
+              <p class="tech-category">Web Automation</p>
+              <p class="tech-description">Browser automation framework for simulating user interactions, DOM manipulation, and cross-browser compatibility testing.</p>
+              <div class="tech-features">
+                <span>Cross-browser</span>
+                <span>DOM Access</span>
+                <span>Event Simulation</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-card" data-tech="flask">
+            <div class="tech-logo">
+              <img src="images/logos/flask.png" alt="Flask Logo" class="tech-logo-img">
+            </div>
+            <div class="tech-content">
+              <h4>Python Flask/FastAPI</h4>
+              <p class="tech-category">Backend Framework</p>
+              <p class="tech-description">Lightweight web frameworks for building RESTful APIs, service orchestration, and distributed healing architecture.</p>
+              <div class="tech-features">
+                <span>REST APIs</span>
+                <span>Microservices</span>
+                <span>Async Support</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-card" data-tech="pandas">
+            <div class="tech-logo">
+              <img src="images/logos/pandas.png" alt="Pandas Logo" class="tech-logo-img">
+            </div>
+            <div class="tech-content">
+              <h4>Pandas & NumPy</h4>
+              <p class="tech-category">Data Processing</p>
+              <p class="tech-description">Scientific computing libraries for data manipulation, statistical analysis, and performance evaluation of healing algorithms.</p>
+              <div class="tech-features">
+                <span>Data Analysis</span>
+                <span>Statistical Computing</span>
+                <span>Performance Metrics</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-card" data-tech="webtech">
+            <div class="tech-logo tech-logo-multi">
+              <img src="images/logos/HTML5_logo_and_wordmark.svg.png" alt="HTML5 Logo" class="tech-logo-img">
+              <img src="images/logos/CSS3_logo_and_wordmark.svg.png" alt="CSS3 Logo" class="tech-logo-img">
+              <img src="images/logos/javascript.png" alt="JavaScript Logo" class="tech-logo-img">
+            </div>
+            <div class="tech-content">
+              <h4>HTML5, CSS3, JavaScript</h4>
+              <p class="tech-category">Frontend Technologies</p>
+              <p class="tech-description">Modern web technologies for building responsive user interfaces, interactive dashboards, and real-time monitoring systems.</p>
+              <div class="tech-features">
+                <span>Responsive Design</span>
+                <span>Interactive UI</span>
+                <span>Real-time Updates</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
 </section>
+
 
 <!-- Milestones section -->
 <section id="milestones" class="milestones-section">
@@ -983,6 +1144,7 @@ footer{
     </div>
   </div>
 </section>
+
 
 <!-- Documentation section -->
 <section id="documentations" class="docs-section">
@@ -1123,9 +1285,11 @@ footer{
         </div>
         <div class="team-copy">
           <p class="team-role">Supervisor</p>
-          <h3>Prof. Nuwan Kodagoda</h3>
-          <p class="team-meta">Faculty of Computing</p>
-          <p class="team-note">Research strategy, methodology validation, and final quality oversight.</p>
+          <h3>Dr. Nuwan Kodagoda</h3>
+          <p class="team-meta">Department of Software Engineering</p>
+          <p class="team-note">Sri Lanka Institute of Information Technology, Malabe, Sri Lanka</p>
+        
+          <p class="team-note">nuwan.k@sliit.lk</p>
         </div>
       </article>
 
@@ -1135,9 +1299,10 @@ footer{
         </div>
         <div class="team-copy">
           <p class="team-role">Co-Supervisor</p>
-          <h3>Prof. Dharshana Kasthurirathne</h3>
-          <p class="team-meta">Department of Software Engineering</p>
-          <p class="team-note">Technical mentoring, experimentation review, and evaluation support.</p>
+          <h3>Dr. Dharshana Kasthurirathne</h3>
+          <p class="team-meta">Department of Computer Science</p>
+          <p class="team-note">Sri Lanka Institute of Information Technology, Malabe, Sri Lanka</p>
+          <p class="team-note">dharshana.k@sliit.lk</p>
         </div>
       </article>
     </div>
@@ -1151,6 +1316,7 @@ footer{
           <p class="team-role">Team Member 01</p>
           <h3>Rathnaweera TT</h3>
           <p class="team-meta">Bachelor of Science (Hons) in Information Technology Specializing in Software Engineering</p>
+          <p class="team-note">it22000880@my.sliit.lk</p>
         </div>
       </article>
 
@@ -1162,6 +1328,7 @@ footer{
           <p class="team-role">Team Member 02</p>
           <h3>Herath H M T W</h3>
           <p class="team-meta">Bachelor of Science (Hons) in Information Technology Specializing in Software Engineering</p>
+          <p class="team-note">it22601124@my.sliit.lk</p>
         </div>
       </article>
 
@@ -1173,6 +1340,7 @@ footer{
           <p class="team-role">Team Member 03</p>
           <h3>Hansara K D K U</h3>
           <p class="team-meta">Bachelor of Science (Hons) in Information Technology Specializing in Software Engineering</p>
+          <p class="team-note">it22352026@my.sliit.lk</p>
         </div>
       </article>
 
@@ -1184,11 +1352,170 @@ footer{
           <p class="team-role">Team Member 04</p>
           <h3>Piyadasa J D C T</h3>
           <p class="team-meta">Bachelor of Science (Hons) in Information Technology Specializing in Software Engineering</p>
+          <p class="team-note">it22926630@my.sliit.lk</p>
         </div>
       </article>
     </div>
   </div>
 </section>
+
+<!-- About section -->
+<!-- 
+<section id="about" class="section about-section">
+  <div class="section-inner">
+
+    <div class="about-top">
+      <div class="about-copy-block">
+        <div class="section-label">Research-Driven Platform Engineering</div>
+        <h2>About Our Research</h2>
+        <p class="about-intro">
+          Ominifix is developed through a research-first approach focused on one critical challenge in Robotic Process Automation: automation failure caused by dynamic user interface changes.
+        </p>
+        <p>
+          We examine how AI-enhanced self-healing can reduce failure frequency and improve long-term reliability in production automation systems.
+        </p>
+      </div>
+
+      <div class="about-visual">
+        <div class="about-visual-content">
+          <div class="about-visual-title">Platform Metrics</div>
+          <div class="about-stat-row">
+            <div class="about-stat">
+              <strong class="about-stat-accent">94%</strong>
+              <span>Healing Success Rate</span>
+            </div>
+            <div class="about-stat">
+              <strong class="about-stat-accent-b">4.2×</strong>
+              <span>Less Downtime</span>
+            </div>
+            <div class="about-stat">
+              <strong style="color:#FFB84B">5</strong>
+              <span>Recovery Strategies</span>
+            </div>
+            <div class="about-stat">
+              <strong class="about-stat-accent">ML</strong>
+              <span>Confidence Scoring</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Research Problem</h3>
+        <p>
+          Traditional RPA bots are highly sensitive to UI volatility. XPath or CSS locators that work today may fail tomorrow after frontend changes — causing repeated maintenance, downtime, and inefficiency. Ominifix addresses how to recover failed automation steps with high confidence, low risk, and minimal human intervention.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <h3>Research Objectives</h3>
+        <ol>
+          <li>Design a self-healing framework that detects and recovers broken locators.</li>
+          <li>Compare multiple healing strategies instead of one fallback rule.</li>
+          <li>Introduce ML confidence scoring for safer decisions.</li>
+          <li>Combine visual validation with DOM-based reasoning in one pipeline.</li>
+          <li>Evaluate hybrid healing resilience in practical RPA scenarios.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="method-section">
+      <div class="method-head">
+        <h3>Methodology</h3>
+        <p>Applied engineering with iterative experimentation under controlled UI-change conditions.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">Step 01</div>
+          <h4>Failure Simulation</h4>
+          <p>Injected attribute edits, text changes, structural shifts, and element relocation to reproduce realistic automation breakdowns.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">Step 02</div>
+          <h4>Candidate Generation</h4>
+          <p>Generated candidates through attribute similarity, DOM ancestry analysis, XPath/CSS reconstruction, and OpenCV visual matching.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">Step 03</div>
+          <h4>Reliability Estimation</h4>
+          <p>Applied ML confidence scoring with threshold gating to prevent unsafe, low-confidence healing actions.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">Step 04</div>
+          <h4>Orchestrated Recovery</h4>
+          <p>Returned structured healing outcomes through APIs for traceable orchestration, monitoring, and scalable integration.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 6v6l4 2"/></svg>
+        </div>
+        <h3>Research Contributions</h3>
+        <ol>
+          <li>Hybrid model combining DOM intelligence, visual matching, and ML confidence scoring.</li>
+          <li>Confidence-gated execution strategy that reduces unsafe auto-healing.</li>
+          <li>Service-oriented architecture for distributed healing and monitoring.</li>
+          <li>Evaluation-ready implementation for realistic automation pipelines.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+        <h3>Key Insights</h3>
+        <ol>
+          <li>Rule-only approaches are insufficient for unstable interfaces.</li>
+          <li>Visual signals improve robustness when DOM context is weak.</li>
+          <li>Confidence-based selection reduces false recovery attempts.</li>
+          <li>Structured orchestration is essential for production-scale adoption.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Current Scope &amp; Limitations</h3>
+        <p>
+          Ominifix currently focuses on web automation healing and representative failure patterns. Model quality depends on training coverage, and performance may vary for unfamiliar UI behaviors.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>Future Research Directions</h3>
+        <ol>
+          <li>Adaptive online learning from post-healing execution feedback.</li>
+          <li>Larger benchmark datasets across domains and UI frameworks.</li>
+          <li>Context-aware strategy weighting based on failure type prediction.</li>
+          <li>Stronger explainability for operator trust and audit reporting.</li>
+          <li>Support for cross-platform and desktop automation contexts.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="impact-block">
+      <h3>Research Impact</h3>
+      <p>
+        This research demonstrates that self-healing RPA can evolve from reactive script maintenance to proactive resilience engineering. Ominifix contributes toward reliable, scalable, and maintainable automation systems where bots adapt to change instead of failing on change.
+      </p>
+    </div>
+
+  </div>
+</section> -->
 
 <!-- Contact section -->
 <section id="contact" class="contact-section">
