@@ -605,6 +605,7 @@ footer{
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#documentations">Docs</a></li>
+      <li><a href="#presentations">Presentations</a></li>
       <li><a href="#milestones">Milestones</a></li>
       <li><a href="#domain">Domain</a></li>
       <li><a href="#achievements">Achievements</a></li>
@@ -657,7 +658,7 @@ footer{
     </div>
 
     <!-- Right panel -->
-    <div class="hero-right">
+    <!-- <div class="hero-right">
       <div class="hero-panel">
         <div class="panel-header">
           <span class="panel-title">Runtime Health</span>
@@ -708,7 +709,7 @@ footer{
           <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
         </a>
       </div>
-    </div>
+    </div> -->
   </div>
 </section>
 
@@ -720,7 +721,7 @@ footer{
       <div class="about-copy-block">
         <div class="section-label">Research-Driven Platform Engineering</div>
         <h2>About Our Research</h2>
-        <p style="margin-bottom:1rem">
+        <p class="about-intro">
           Ominifix is developed through a research-first approach focused on one critical challenge in Robotic Process Automation: automation failure caused by dynamic user interface changes.
         </p>
         <p>
@@ -885,68 +886,95 @@ footer{
       </div>
     </div>
 
-    <div class="milestones-grid">
-      <article class="milestone-card">
-        <h3>Project Proposal (Presentation + Proposal Report)</h3>
-        <p class="milestone-date">March 2023</p>
-        <p class="milestone-mark">Mark Allocation - 12%</p>
-        <div class="milestone-tags"><span>Group</span><span>Individual</span></div>
+    <div class="milestones-flow" aria-label="Project milestones timeline">
+      <article class="milestone-item">
+        <span class="milestone-node" aria-hidden="true"></span>
+        <div class="milestone-content">
+          <p class="milestone-date">March 2023</p>
+          <h3>Project Proposal (Presentation + Proposal Report)</h3>
+          <p class="milestone-mark">Mark Allocation: 12%</p>
+          <div class="milestone-tags"><span>Group</span><span>Individual</span></div>
+        </div>
       </article>
 
-      <article class="milestone-card">
-        <h3>Progress Presentation - 1</h3>
-        <p class="milestone-date">May 2023</p>
-        <p class="milestone-mark">Mark Allocation - 15%</p>
-        <div class="milestone-tags"><span>Group</span><span>Individual</span></div>
+      <article class="milestone-item">
+        <span class="milestone-node" aria-hidden="true"></span>
+        <div class="milestone-content">
+          <p class="milestone-date">May 2023</p>
+          <h3>Progress Presentation - 1</h3>
+          <p class="milestone-mark">Mark Allocation: 15%</p>
+          <div class="milestone-tags"><span>Group</span><span>Individual</span></div>
+        </div>
       </article>
 
-      <article class="milestone-card">
-        <h3>Research Paper Publication</h3>
-        <p class="milestone-date">June 2023</p>
-        <p class="milestone-mark">Mark Allocation - 10%</p>
-        <div class="milestone-tags"><span>Group</span></div>
+      <article class="milestone-item">
+        <span class="milestone-node" aria-hidden="true"></span>
+        <div class="milestone-content">
+          <p class="milestone-date">June 2023</p>
+          <h3>Research Paper Publication</h3>
+          <p class="milestone-mark">Mark Allocation: 10%</p>
+          <div class="milestone-tags"><span>Group</span></div>
+        </div>
       </article>
 
-      <article class="milestone-card">
-        <h3>Final Reports (Thesis)</h3>
-        <p class="milestone-date">September 2023</p>
-        <p class="milestone-mark">Mark Allocation - 19%</p>
-        <div class="milestone-tags"><span>Group</span><span>Individual</span></div>
+      <article class="milestone-item">
+        <span class="milestone-node" aria-hidden="true"></span>
+        <div class="milestone-content">
+          <p class="milestone-date">September 2023</p>
+          <h3>Final Reports (Thesis)</h3>
+          <p class="milestone-mark">Mark Allocation: 19%</p>
+          <div class="milestone-tags"><span>Group</span><span>Individual</span></div>
+        </div>
       </article>
 
-      <article class="milestone-card">
-        <h3>Progress Presentation - 2</h3>
-        <p class="milestone-date">September 2023</p>
-        <p class="milestone-mark">Mark Allocation - 18%</p>
-        <div class="milestone-tags"><span>Group</span><span>Individual</span></div>
+      <article class="milestone-item">
+        <span class="milestone-node" aria-hidden="true"></span>
+        <div class="milestone-content">
+          <p class="milestone-date">September 2023</p>
+          <h3>Progress Presentation - 2</h3>
+          <p class="milestone-mark">Mark Allocation: 18%</p>
+          <div class="milestone-tags"><span>Group</span><span>Individual</span></div>
+        </div>
       </article>
 
-      <article class="milestone-card">
-        <h3>Status Documents 1 &amp; 2</h3>
-        <p class="milestone-date">May and September 2023</p>
-        <p class="milestone-mark">Mark Allocation - 2%</p>
-        <div class="milestone-tags"><span>Individual</span></div>
+      <article class="milestone-item">
+        <span class="milestone-node" aria-hidden="true"></span>
+        <div class="milestone-content">
+          <p class="milestone-date">May and September 2023</p>
+          <h3>Status Documents 1 &amp; 2</h3>
+          <p class="milestone-mark">Mark Allocation: 2%</p>
+          <div class="milestone-tags"><span>Individual</span></div>
+        </div>
       </article>
 
-      <article class="milestone-card">
-        <h3>Log Books</h3>
-        <p class="milestone-date">October 2023</p>
-        <p class="milestone-mark">Mark Allocation - 2%</p>
-        <div class="milestone-tags"><span>Individual</span></div>
+      <article class="milestone-item">
+        <span class="milestone-node" aria-hidden="true"></span>
+        <div class="milestone-content">
+          <p class="milestone-date">October 2023</p>
+          <h3>Log Books</h3>
+          <p class="milestone-mark">Mark Allocation: 2%</p>
+          <div class="milestone-tags"><span>Individual</span></div>
+        </div>
       </article>
 
-      <article class="milestone-card">
-        <h3>Final Presentation + Viva</h3>
-        <p class="milestone-date">October 2023</p>
-        <p class="milestone-mark">Mark Allocation - 20%</p>
-        <div class="milestone-tags"><span>Group</span><span>Individual</span></div>
+      <article class="milestone-item">
+        <span class="milestone-node" aria-hidden="true"></span>
+        <div class="milestone-content">
+          <p class="milestone-date">October 2023</p>
+          <h3>Final Presentation + Viva</h3>
+          <p class="milestone-mark">Mark Allocation: 20%</p>
+          <div class="milestone-tags"><span>Group</span><span>Individual</span></div>
+        </div>
       </article>
 
-      <article class="milestone-card">
-        <h3>Website Development</h3>
-        <p class="milestone-date">November 2023</p>
-        <p class="milestone-mark">Mark Allocation - 2%</p>
-        <div class="milestone-tags"><span>Group</span></div>
+      <article class="milestone-item">
+        <span class="milestone-node" aria-hidden="true"></span>
+        <div class="milestone-content">
+          <p class="milestone-date">November 2023</p>
+          <h3>Website Development</h3>
+          <p class="milestone-mark">Mark Allocation: 2%</p>
+          <div class="milestone-tags"><span>Group</span></div>
+        </div>
       </article>
     </div>
   </div>
@@ -970,7 +998,7 @@ footer{
         </div>
         <h3>Project Charter</h3>
         <p>The document gives the information regarding the statement of scope, objectives, overview, and outline of scope, an approximate schedule and people who are participating in a project.</p>
-        <a href="#" class="doc-btn">Download</a>
+        <a href="docs/signed-TAF_25-26J-524.pdf" class="doc-btn" target="_blank" rel="noopener">Download</a>
       </article>
 
       <article class="doc-card">
@@ -1046,21 +1074,21 @@ footer{
         <div class="presentation-badge">01</div>
         <h3>Proposal Presentation</h3>
         <p>Initial Presentation with Overview of Research Problem</p>
-        <a href="#" class="presentation-btn">View Presentation</a>
+        <a href="presentations/OMNIFIX RPA Self-Healing Proposal Presentation (1).pdf" class="presentation-btn" target="_blank" rel="noopener">View Presentation</a>
       </article>
 
       <article class="presentation-card">
         <div class="presentation-badge">02</div>
         <h3>Progress Presentation - 1</h3>
         <p>50% Project Completion</p>
-        <a href="#" class="presentation-btn">View Presentation</a>
+        <a href="presentations/OMNIFIX RPA Self-Healing PP1.pdf" class="presentation-btn" target="_blank" rel="noopener">View Presentation</a>
       </article>
 
       <article class="presentation-card">
         <div class="presentation-badge">03</div>
         <h3>Progress Presentation - 2</h3>
         <p>90% Project Completion</p>
-        <a href="#" class="presentation-btn">View Presentation</a>
+        <a href="presentations/OMNIFIX RPA Self-Healing PP2.pdf" class="presentation-btn" target="_blank" rel="noopener">View Presentation</a>
       </article>
 
       <article class="presentation-card presentation-card-final">
@@ -1069,6 +1097,174 @@ footer{
         <p>100% Completion with Deployed Solution</p>
         <a href="#" class="presentation-btn">View Presentation</a>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- Team section -->
+<section id="team" class="team-section">
+  <div class="section-inner team-inner">
+    <div class="team-header">
+      <div>
+        <div class="section-label">Team</div>
+        <h2 class="section-title">Meet The Research Team</h2>
+        <p class="section-sub">A focused group of researchers guided by academic supervision and engineering collaboration.</p>
+      </div>
+    </div>
+
+    <div class="team-leads">
+      <article class="team-card team-card-lead">
+        <div class="team-photo" aria-label="Supervisor photo placeholder">
+          <img src="images/supervisor/supervisor.jpeg" alt="Prof. Nuwan Kodagoda">
+        </div>
+        <div class="team-copy">
+          <p class="team-role">Supervisor</p>
+          <h3>Prof. Nuwan Kodagoda</h3>
+          <p class="team-meta">Faculty of Computing</p>
+          <p class="team-note">Research strategy, methodology validation, and final quality oversight.</p>
+        </div>
+      </article>
+
+      <article class="team-card team-card-lead">
+        <div class="team-photo" aria-label="Co-supervisor photo placeholder">
+          <img src="images/supervisor/co_supervisor.jpeg" alt="Prof. Dharshana Kasthurirathne">
+        </div>
+        <div class="team-copy">
+          <p class="team-role">Co-Supervisor</p>
+          <h3>Prof. Dharshana Kasthurirathne</h3>
+          <p class="team-meta">Department of Software Engineering</p>
+          <p class="team-note">Technical mentoring, experimentation review, and evaluation support.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="team-members">
+      <article class="team-card">
+        <div class="team-photo" aria-label="Team member 1 photo placeholder">
+          <img src="images/team_members/rathnayka.jpeg" alt="Rathnaweera TT">
+        </div>
+        <div class="team-copy">
+          <p class="team-role">Team Member 01</p>
+          <h3>Rathnaweera TT</h3>
+          <p class="team-meta">Bachelor of Science (Hons) in Information Technology Specializing in Software Engineering</p>
+        </div>
+      </article>
+
+      <article class="team-card">
+        <div class="team-photo" aria-label="Team member 2 photo placeholder">
+          <img src="images/team_members/herath.png" alt="Herath H M T W">
+        </div>
+        <div class="team-copy">
+          <p class="team-role">Team Member 02</p>
+          <h3>Herath H M T W</h3>
+          <p class="team-meta">Bachelor of Science (Hons) in Information Technology Specializing in Software Engineering</p>
+        </div>
+      </article>
+
+      <article class="team-card">
+        <div class="team-photo" aria-label="Team member 3 photo placeholder">
+          <img src="images/team_members/hansara.jpg.jpeg" alt="Hansara K D K U">
+        </div>
+        <div class="team-copy">
+          <p class="team-role">Team Member 03</p>
+          <h3>Hansara K D K U</h3>
+          <p class="team-meta">Bachelor of Science (Hons) in Information Technology Specializing in Software Engineering</p>
+        </div>
+      </article>
+
+      <article class="team-card">
+        <div class="team-photo" aria-label="Team member 4 photo placeholder">
+          <img src="images/team_members/piyadasa.jpeg" alt="Piyadasa J D C T">
+        </div>
+        <div class="team-copy">
+          <p class="team-role">Team Member 04</p>
+          <h3>Piyadasa J D C T</h3>
+          <p class="team-meta">Bachelor of Science (Hons) in Information Technology Specializing in Software Engineering</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Contact section -->
+<section id="contact" class="contact-section">
+  <div class="section-inner contact-inner">
+    <div class="contact-header">
+      <div>
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Get In Touch With Our Team</h2>
+        <p class="section-sub">Reach out for research collaboration, project inquiries, or access to Ominifix resources and demonstrations.</p>
+      </div>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-panel">
+        <article class="contact-item">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 5h18v14H3V5zm2 2v.2l7 4.7 7-4.7V7l-7 4.7L5 7z"/></svg>
+          </div>
+          <div>
+            <p class="contact-label">Email</p>
+            <a href="mailto:ominifix.team@example.com">ominifix.team@example.com</a>
+          </div>
+        </article>
+
+        <article class="contact-item">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.4 15.4 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V21c0 .6-.4 1-1 1C10.6 22 2 13.4 2 2c0-.6.4-1 1-1h4.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1l-2.2 2.2z"/></svg>
+          </div>
+          <div>
+            <p class="contact-label">Phone</p>
+            <a href="tel:+94000000000">+94 00 000 0000</a>
+          </div>
+        </article>
+
+        <article class="contact-item">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+          </div>
+          <div>
+            <p class="contact-label">Location</p>
+            <p>Faculty of Computing, Sri Lanka Institute of Information Technology</p>
+          </div>
+        </article>
+      </div>
+
+      <form class="contact-form" action="#" method="post">
+        <div class="contact-field-row">
+          <div class="contact-field">
+            <label for="contact-name">Full Name</label>
+            <input id="contact-name" name="name" type="text" placeholder="Enter your name" required>
+          </div>
+          <div class="contact-field">
+            <label for="contact-email">Email Address</label>
+            <input id="contact-email" name="email" type="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+
+        <div class="contact-field-row">
+          <div class="contact-field">
+            <label for="contact-subject">Subject</label>
+            <input id="contact-subject" name="subject" type="text" placeholder="How can we help?" required>
+          </div>
+          <div class="contact-field">
+            <label for="contact-type">Inquiry Type</label>
+            <select id="contact-type" name="type">
+              <option>Research Collaboration</option>
+              <option>Project Demo</option>
+              <option>Technical Question</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="contact-field">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+        </div>
+
+        <button type="submit" class="contact-submit">Send Message</button>
+      </form>
     </div>
   </div>
 </section>
