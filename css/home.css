@@ -1086,6 +1086,7 @@ footer{
 	background:#050C1F;
 	border-top:1px solid rgba(255,255,255,0.07);
 	padding:64px 2rem 32px;
+	transition:all 0.3s ease;
 }
 .footer-inner{max-width:1200px;margin:0 auto}
 .footer-top{
@@ -1098,13 +1099,16 @@ footer{
 	font-family:var(--font-head);font-size:0.72rem;font-weight:700;
 	color:rgba(180,200,255,0.45);text-transform:uppercase;
 	letter-spacing:0.1em;margin-bottom:1.1rem;
+	transition:all 0.3s ease;
 }
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.55rem}
 .footer-col ul li a{
 	font-size:0.85rem;color:rgba(180,200,255,0.6);
-	text-decoration:none;transition:color 0.15s;
+	text-decoration:none;transition:all 0.3s ease;
 }
-.footer-col ul li a:hover{color:#FFFFFF}
+.footer-col h4:hover{
+	color:rgba(180,200,255,0.7);
+}
 .footer-bottom{
 	border-top:1px solid rgba(255,255,255,0.07);
 	padding-top:1.5rem;
