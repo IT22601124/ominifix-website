@@ -6,135 +6,1071 @@
 <title>Ominifix — Self-Healing RPA Framework</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:#050C1F;
+  --ink-2:#2D3A5A;
+  --ink-3:#7380A0;
+  --surface:#F4F6FB;
+  --surface-2:#EBEFF9;
+  --card:#FFFFFF;
+  --accent:#1847D6;
+  --accent-2:#0F35B0;
+  --accent-light:rgba(24,71,214,0.12);
+  --teal:#00A878;
+  --teal-bg:rgba(0,168,120,0.1);
+  --border:rgba(5,12,31,0.07);
+  --border-mid:rgba(5,12,31,0.12);
+  --r:16px;
+  --font-head:'Manrope',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --nav-h:72px;
+}
+
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);background:var(--surface);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#F4F6FB}
+::-webkit-scrollbar-thumb{background:rgba(24,71,214,0.3);border-radius:99px}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:200;
+  transition:all 0.3s ease;
+  background:transparent;
+}
+nav.scrolled{
+  background:rgba(4,9,24,0.88);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.nav-inner{
+  max-width:1240px;margin:0 auto;
+  padding:0 2rem;height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.logo-mark{
+  width:34px;height:34px;border-radius:10px;
+  background:linear-gradient(135deg,#1847D6,#4B83FF);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 18px rgba(24,71,214,0.3);
+}
+.logo-mark svg{width:18px;height:18px;fill:white}
+.logo-name{font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:#FFF;letter-spacing:-0.02em}
+.logo-name em{color:#4B83FF;font-style:normal}
+
+nav ul{list-style:none;display:flex;gap:0.2rem;align-items:center;flex:1;justify-content:center}
+nav ul li a{
+  font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.75);
+  text-decoration:none;padding:8px 14px;border-radius:8px;
+  transition:all 0.18s ease;
+}
+nav ul li a:hover{color:#fff;background:rgba(255,255,255,0.1)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-body);font-size:0.9rem;font-weight:600;
+  text-decoration:none;cursor:pointer;border:none;
+  transition:all 0.2s ease;border-radius:10px;
+}
+.btn-primary{
+  padding:10px 22px;
+  background:linear-gradient(135deg,#1847D6 0%,#3B6EEF 100%);
+  color:#fff;
+  box-shadow:0 8px 22px rgba(24,71,214,0.32);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(24,71,214,0.42)}
+.btn-ghost{
+  padding:9px 20px;
+  background:rgba(255,255,255,0.1);
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.2);
+}
+.btn-ghost:hover{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.35)}
+
+/* ─── HERO ─── */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  overflow:hidden;
+  background:#040914;
+  padding:calc(var(--nav-h) + 3rem) 2rem 4rem;
+}
+
+/* Layered background */
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 20%, rgba(24,71,214,0.28) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 75%, rgba(0,168,120,0.16) 0%, transparent 55%),
+    radial-gradient(ellipse 100% 80% at 50% 0%, rgba(10,20,60,0.9) 0%, rgba(4,9,20,0.6) 100%);
+}
+
+/* Grid overlay */
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+}
+
+/* Glowing orbs */
+.orb{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(80px);
+  pointer-events:none;
+  animation:orbFloat 12s ease-in-out infinite;
+}
+.orb-1{width:600px;height:600px;background:rgba(24,71,214,0.2);top:-100px;left:-80px}
+.orb-2{width:500px;height:500px;background:rgba(0,168,120,0.12);bottom:-80px;right:-60px;animation-delay:-6s}
+.orb-3{width:300px;height:300px;background:rgba(75,131,255,0.15);top:40%;left:55%;animation-delay:-3s}
+
+@keyframes orbFloat{
+  0%,100%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(20px,-30px) scale(1.05)}
+  66%{transform:translate(-15px,20px) scale(0.96)}
+}
+
+.hero-inner{
+  position:relative;z-index:1;
+  max-width:1240px;margin:0 auto;width:100%;
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:5rem;
+  align-items:center;
+}
+
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 14px 6px 8px;border-radius:999px;
+  background:rgba(24,71,214,0.15);
+  border:1px solid rgba(75,131,255,0.35);
+  margin-bottom:1.5rem;
+}
+.hero-eyebrow-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#4BFF9E;
+  box-shadow:0 0 8px #4BFF9E;
+  animation:pulse 2s ease infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 6px #4BFF9E}
+  50%{box-shadow:0 0 16px #4BFF9E,0 0 30px rgba(75,255,158,0.4)}
+}
+.hero-eyebrow span{
+  font-family:var(--font-mono);font-size:0.65rem;
+  font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(200,220,255,0.9);
+}
+
+.hero h1{
+  font-family:var(--font-head);
+  font-size:clamp(2.6rem,5.5vw,4.4rem);
+  line-height:1.02;
+  letter-spacing:-0.035em;
+  font-weight:800;
+  color:#F0F5FF;
+  margin-bottom:1.4rem;
+}
+.hero h1 .h1-accent{
+  position:relative;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(75,131,255,0.6);
+  display:inline-block;
+}
+.hero h1 .h1-accent::before{
+  content:attr(data-text);
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#4B83FF,#7EC8FF,#00D4A0);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+.hero-desc{
+  font-size:1.05rem;line-height:1.78;
+  color:rgba(200,215,250,0.8);
+  max-width:54ch;
+  margin-bottom:2rem;
+}
+
+.hero-actions{display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;margin-bottom:2.5rem}
+
+.hero-tags{display:flex;gap:0.5rem;flex-wrap:wrap}
+.hero-tags span{
+  padding:5px 12px;border-radius:999px;
+  font-size:0.75rem;font-weight:500;
+  color:rgba(180,205,255,0.85);
+  background:rgba(10,25,65,0.6);
+  border:1px solid rgba(75,131,255,0.22);
+}
+
+/* ─── HERO PANEL (right card) ─── */
+.hero-panel{
+  position:relative;
+  background:linear-gradient(160deg, rgba(12,26,70,0.95), rgba(6,14,42,0.98));
+  border:1px solid rgba(75,131,255,0.22);
+  border-radius:24px;
+  padding:1.75rem;
+  box-shadow:0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+}
+.hero-panel::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(160deg,rgba(75,131,255,0.08),transparent 50%);
+  pointer-events:none;
+}
+
+.panel-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:1.4rem;padding-bottom:1rem;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.panel-title{
+  font-family:var(--font-head);font-size:0.85rem;font-weight:700;
+  color:rgba(200,220,255,0.9);letter-spacing:0.04em;text-transform:uppercase;
+}
+.panel-live{
+  display:flex;align-items:center;gap:6px;
+  font-family:var(--font-mono);font-size:0.62rem;
+  color:#4BFF9E;letter-spacing:0.08em;text-transform:uppercase;
+}
+.panel-live::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:#4BFF9E;box-shadow:0 0 10px #4BFF9E;
+  animation:pulse 2s ease infinite;
+}
+
+.metric-row{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0.75rem;margin-bottom:1.2rem;
+}
+.metric{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;padding:0.85rem 0.7rem;
+  text-align:center;
+  transition:border-color 0.2s;
+}
+.metric:hover{border-color:rgba(75,131,255,0.35)}
+.metric strong{
+  display:block;
+  font-family:var(--font-head);font-size:1.2rem;font-weight:800;
+  color:#FFFFFF;letter-spacing:-0.02em;margin-bottom:2px;
+}
+.metric span{font-size:0.65rem;color:rgba(150,175,230,0.8);font-weight:500;text-transform:uppercase;letter-spacing:0.06em}
+
+.activity-label{
+  font-family:var(--font-mono);font-size:0.65rem;
+  color:rgba(120,150,210,0.8);letter-spacing:0.06em;text-transform:uppercase;
+  margin-bottom:0.7rem;
+}
+.activity-list{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.2rem}
+.activity-item{
+  display:flex;align-items:center;gap:10px;
+  padding:0.6rem 0.75rem;border-radius:10px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06);
+  font-size:0.8rem;color:rgba(195,215,255,0.85);
+}
+.activity-dot{
+  width:7px;height:7px;border-radius:50%;flex-shrink:0;
+}
+.dot-green{background:#4BFF9E;box-shadow:0 0 8px rgba(75,255,158,0.6)}
+.dot-blue{background:#4B83FF;box-shadow:0 0 8px rgba(75,131,255,0.6)}
+.dot-amber{background:#FFB84B;box-shadow:0 0 8px rgba(255,184,75,0.6)}
+.activity-time{margin-left:auto;font-family:var(--font-mono);font-size:0.62rem;color:rgba(120,150,210,0.6)}
+
+.panel-cta{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:0.75rem;border-radius:12px;
+  background:rgba(24,71,214,0.22);
+  border:1px solid rgba(75,131,255,0.3);
+  color:rgba(180,210,255,0.9);
+  font-size:0.82rem;font-weight:600;
+  text-decoration:none;letter-spacing:0.01em;
+  transition:all 0.2s ease;
+}
+.panel-cta:hover{background:rgba(24,71,214,0.35);border-color:rgba(75,131,255,0.55);transform:translateY(-1px)}
+.panel-cta svg{width:14px;height:14px;fill:currentColor;opacity:0.7}
+
+/* ─── SECTION COMMONS ─── */
+.section{padding:100px 2rem}
+.section-inner{max-width:1200px;margin:0 auto}
+
+.section-label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-mono);font-size:0.65rem;font-weight:500;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:0.9rem;
+}
+.section-label::before{
+  content:'';width:20px;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,var(--accent),var(--teal));
+}
+
+.section-title{
+  font-family:var(--font-head);
+  font-size:clamp(2rem,3.8vw,3rem);
+  line-height:1.08;letter-spacing:-0.03em;font-weight:800;
+  color:var(--ink);margin-bottom:1rem;
+}
+.section-sub{
+  font-size:1.02rem;line-height:1.72;color:var(--ink-2);
+  max-width:56ch;
+}
+
+/* ─── ABOUT SECTION ─── */
+.about-section{
+  background:linear-gradient(180deg,#F0F4FF 0%,#F7F9FE 50%,#EEF3FF 100%);
+  border-top:1px solid var(--border);
+}
+
+.about-top{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:start;margin-bottom:4rem;
+}
+
+.about-copy-block{
+  background:#FFFFFF;
+  border:1px solid var(--border-mid);
+  border-radius:20px;padding:2rem;
+  box-shadow:0 12px 32px rgba(5,12,31,0.07);
+}
+.about-copy-block h2{
+  font-family:var(--font-head);
+  font-size:clamp(1.8rem,3vw,2.5rem);
+  font-weight:800;letter-spacing:-0.03em;line-height:1.1;
+  color:var(--ink);margin-bottom:0.8rem;
+}
+.about-copy-block p{
+  font-size:0.95rem;line-height:1.76;color:var(--ink-2);
+}
+
+.about-visual{
+  border-radius:20px;overflow:hidden;
+  background:linear-gradient(135deg,#0A1842,#061130);
+  border:1px solid rgba(24,71,214,0.2);
+  box-shadow:0 20px 50px rgba(5,12,31,0.15);
+  min-height:340px;
+  display:flex;flex-direction:column;
+  padding:1.5rem;position:relative;overflow:hidden;
+}
+.about-visual::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(24,71,214,0.3),transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0,168,120,0.2),transparent 50%);
+}
+.about-visual-content{position:relative;z-index:1}
+.about-visual-title{
+  font-family:var(--font-head);font-size:0.72rem;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(150,180,255,0.7);margin-bottom:1.5rem;
+}
+.about-stat-row{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;
+}
+.about-stat{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:14px;padding:1.1rem;
+}
+.about-stat strong{
+  display:block;
+  font-family:var(--font-head);font-size:1.8rem;font-weight:800;
+  color:#FFFFFF;letter-spacing:-0.04em;line-height:1;margin-bottom:4px;
+}
+.about-stat span{font-size:0.76rem;color:rgba(150,180,255,0.75);font-weight:500}
+.about-stat-accent{color:#4BFF9E!important}
+.about-stat-accent-b{color:#4B83FF!important}
+
+/* Cards grid */
+.cards-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1.25rem;margin-bottom:1.25rem;
+}
+.card{
+  background:#FFFFFF;
+  border:1px solid var(--border-mid);
+  border-radius:20px;padding:1.75rem;
+  box-shadow:0 8px 24px rgba(5,12,31,0.06);
+  transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position:relative;overflow:hidden;
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--accent),var(--teal));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.3s ease;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 45px rgba(5,12,31,0.12);border-color:rgba(24,71,214,0.2)}
+.card:hover::before{transform:scaleX(1)}
+
+.card-icon{
+  width:44px;height:44px;border-radius:12px;
+  background:linear-gradient(135deg,var(--accent-light),rgba(0,168,120,0.08));
+  border:1px solid rgba(24,71,214,0.18);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;
+}
+.card-icon svg{width:20px;height:20px;fill:var(--accent)}
+
+.card h3{
+  font-family:var(--font-head);font-size:1.12rem;font-weight:700;
+  letter-spacing:-0.015em;color:var(--ink);margin-bottom:0.65rem;
+}
+.card p{font-size:0.92rem;line-height:1.68;color:var(--ink-2);margin:0}
+.card ol{
+  margin:0;padding-left:1.1rem;
+  display:flex;flex-direction:column;gap:0.44rem;
+}
+.card ol li{font-size:0.88rem;line-height:1.6;color:var(--ink-2)}
+
+/* Methodology */
+.method-section{
+  background:#FFFFFF;
+  border:1px solid var(--border-mid);
+  border-radius:24px;padding:2.2rem;
+  box-shadow:0 8px 24px rgba(5,12,31,0.06);
+  margin-bottom:1.25rem;
+}
+.method-head{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:2rem;margin-bottom:1.75rem;
+}
+.method-head h3{
+  font-family:var(--font-head);font-size:1.5rem;font-weight:800;
+  letter-spacing:-0.025em;color:var(--ink);margin:0;
+}
+.method-head p{font-size:0.9rem;line-height:1.7;color:var(--ink-2);max-width:44ch;margin:0}
+
+.steps-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--border-mid);
+  border-radius:14px;overflow:hidden;
+}
+.step{
+  background:#FFFFFF;
+  padding:1.4rem 1.1rem;
+  position:relative;
+}
+.step-num{
+  font-family:var(--font-mono);font-size:0.62rem;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:0.65rem;
+}
+.step h4{font-family:var(--font-head);font-size:0.95rem;font-weight:700;color:var(--ink);margin-bottom:0.44rem;letter-spacing:-0.01em}
+.step p{font-size:0.82rem;line-height:1.62;color:var(--ink-2);margin:0}
+
+/* Impact block */
+.impact-block{
+  background:linear-gradient(135deg,var(--accent),#3B6EEF 50%,#2D8FFF);
+  border-radius:20px;padding:2.5rem 2.5rem;
+  color:#FFFFFF;
+  position:relative;overflow:hidden;
+  box-shadow:0 20px 50px rgba(24,71,214,0.28);
+}
+.impact-block::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 90% 20%,rgba(255,255,255,0.12),transparent 45%),
+    radial-gradient(circle at 10% 80%,rgba(0,168,120,0.25),transparent 45%);
+  pointer-events:none;
+}
+.impact-block h3{
+  font-family:var(--font-head);font-size:1.6rem;font-weight:800;
+  letter-spacing:-0.025em;margin-bottom:0.8rem;position:relative;
+}
+.impact-block p{
+  font-size:0.98rem;line-height:1.75;opacity:0.88;
+  max-width:68ch;position:relative;
+}
+
+/* ─── NAV SECTIONS ─── */
+#documentations,#milestones,#domain,#achievements,#team,#contact{
+  scroll-margin-top:var(--nav-h);
+}
+
+/* Placeholder sections */
+.placeholder-section{
+  background:#FFFFFF;border-top:1px solid var(--border);
+  padding:100px 2rem;text-align:center;
+}
+.placeholder-section h2{
+  font-family:var(--font-head);font-size:1.8rem;font-weight:800;
+  letter-spacing:-0.025em;color:var(--ink);margin-bottom:0.6rem;
+}
+.placeholder-section p{font-size:0.95rem;color:var(--ink-2)}
+
+/* ─── FOOTER ─── */
+footer{
+  background:#050C1F;
+  border-top:1px solid rgba(255,255,255,0.07);
+  padding:64px 2rem 32px;
+}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:3.5rem;margin-bottom:3.5rem;
+}
+.footer-brand .logo-name{color:#FFFFFF}
+.footer-brand p{font-size:0.86rem;color:rgba(180,200,255,0.5);margin-top:1rem;max-width:280px;line-height:1.7}
+.footer-col h4{
+  font-family:var(--font-head);font-size:0.72rem;font-weight:700;
+  color:rgba(180,200,255,0.45);text-transform:uppercase;
+  letter-spacing:0.1em;margin-bottom:1.1rem;
+}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.55rem}
+.footer-col ul li a{
+  font-size:0.85rem;color:rgba(180,200,255,0.6);
+  text-decoration:none;transition:color 0.15s;
+}
+.footer-col ul li a:hover{color:#FFFFFF}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,0.07);
+  padding-top:1.5rem;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:0.78rem;color:rgba(150,175,255,0.4);
+}
+.footer-version{font-family:var(--font-mono);font-size:0.68rem;color:rgba(100,130,210,0.4)}
+
+/* ─── ANIMATIONS ─── */
+@keyframes heroReveal{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.hero-left{animation:heroReveal 0.7s 0.1s cubic-bezier(0.22,1,0.36,1) both}
+.hero-right{animation:heroReveal 0.7s 0.28s cubic-bezier(0.22,1,0.36,1) both}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:3rem;max-width:700px}
+  .hero-right{justify-self:stretch}
+  .about-top{grid-template-columns:1fr;gap:2rem}
+  .steps-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .nav-inner{padding:0 1.2rem}
+  nav ul{display:none}
+  .section{padding:72px 1.2rem}
+  .hero{padding:calc(var(--nav-h) + 2rem) 1.2rem 3rem}
+  .cards-grid{grid-template-columns:1fr}
+  .method-head{flex-direction:column;gap:0.75rem}
+  .steps-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
+  .impact-block{padding:1.8rem}
+}
+@media(max-width:520px){
+  .hero h1{font-size:clamp(2.2rem,10vw,3rem)}
+  .metric-row{grid-template-columns:repeat(3,1fr)}
+  .about-stat-row{grid-template-columns:1fr 1fr}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:0.6rem;text-align:center}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-left,.hero-right,.orb{animation:none}
+  *{transition-duration:0s!important}
+}
+</style>
 <link rel="stylesheet" href="css/home.css"/>
 <link rel="stylesheet" href="css/about.css"/>
 </head>
 <body>
 
 <!-- ─── NAV ─── -->
-<nav>
+<nav id="main-nav">
   <div class="nav-inner">
     <a class="logo" href="#">
       <div class="logo-mark">
         <svg viewBox="0 0 20 20"><path d="M10 2L3 7v6l7 5 7-5V7L10 2zm0 2.3l5 3.5v4.4l-5 3.5-5-3.5V7.8L10 4.3z"/><circle cx="10" cy="10" r="2.2"/></svg>
       </div>
-      <span class="logo-name">Omini<span>fix</span></span>
+      <span class="logo-name">Omini<em>fix</em></span>
     </a>
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#documentations">Documentations</a></li>
+      <li><a href="#documentations">Docs</a></li>
       <li><a href="#milestones">Milestones</a></li>
       <li><a href="#domain">Domain</a></li>
       <li><a href="#achievements">Achievements</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="#cta" class="btn btn-primary nav-cta">Get Started</a>
+    <div style="display:flex;gap:0.6rem;flex-shrink:0">
+      <a href="#documentations" class="btn btn-ghost">Explore Docs</a>
+      <a href="#" class="btn btn-primary">Get Started</a>
+    </div>
   </div>
 </nav>
 
+<!-- ─── HERO ─── -->
+<section id="home" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
 
-<!-- Home section -->
-<section id="home" class="home-section">
-  
+  <div class="hero-inner">
+    <!-- Left copy -->
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        <span>AI-Native Enterprise Automation</span>
+      </div>
+
+      <h1>
+        Self-Healing RPA<br>
+        <span class="h1-accent" data-text="Built for">Built for</span><br>
+        Production
+      </h1>
+
+      <p class="hero-desc">
+        Ominifix detects UI drift, repairs broken locators, and keeps bots running — with confidence-scored recovery that lets your teams focus on delivery, not maintenance.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary" style="padding:13px 28px;font-size:1rem;border-radius:12px">Get Started</a>
+        <a href="#about" class="btn btn-ghost" style="padding:12px 26px;font-size:0.98rem;border-radius:12px">View Platform</a>
+      </div>
+
+      <div class="hero-tags">
+        <span>Adaptive Locator Healing</span>
+        <span>Confidence-Gated Recovery</span>
+        <span>Continuous Bot Uptime</span>
+      </div>
+    </div>
+
+    <!-- Right panel -->
+    <div class="hero-right">
+      <div class="hero-panel">
+        <div class="panel-header">
+          <span class="panel-title">Runtime Health</span>
+          <span class="panel-live">Live</span>
+        </div>
+
+        <div class="metric-row">
+          <div class="metric">
+            <strong>99.8%</strong>
+            <span>Uptime</span>
+          </div>
+          <div class="metric">
+            <strong>&lt;120ms</strong>
+            <span>Recovery</span>
+          </div>
+          <div class="metric">
+            <strong>24/7</strong>
+            <span>Monitor</span>
+          </div>
+        </div>
+
+        <div class="activity-label">Recent Activity</div>
+        <div class="activity-list">
+          <div class="activity-item">
+            <div class="activity-dot dot-green"></div>
+            <span>Locator healed — login_btn</span>
+            <span class="activity-time">2s ago</span>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot dot-blue"></div>
+            <span>DOM scan completed</span>
+            <span class="activity-time">18s ago</span>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot dot-amber"></div>
+            <span>Low-confidence fallback triggered</span>
+            <span class="activity-time">1m ago</span>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot dot-green"></div>
+            <span>Bot pipeline resumed</span>
+            <span class="activity-time">1m ago</span>
+          </div>
+        </div>
+
+        <a href="#about" class="panel-cta">
+          View Full Platform
+          <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- ─── ABOUT SECTION ─── -->
+<section id="about" class="section about-section">
+  <div class="section-inner">
 
-<!--About section -->
-<section id="about" class="about-section">
-    <div class="about-grid">
-  <article class="about-card">
-    <h3>Why Ominifix Exists</h3>
-    <p>
-      Modern web applications evolve continuously. Small frontend updates can cause major downstream automation failures. Teams then spend time diagnosing logs, editing selectors, redeploying scripts, and revalidating entire flows. Ominifix was created to shift this model from manual recovery to intelligent auto-recovery, minimizing downtime and protecting business operations.
-    </p>
-  </article>
+    <div class="about-top">
+      <div class="about-copy-block">
+        <div class="section-label">Research-Driven Platform Engineering</div>
+        <h2>About Our Research</h2>
+        <p style="margin-bottom:1rem">
+          Ominifix is developed through a research-first approach focused on one critical challenge in Robotic Process Automation: automation failure caused by dynamic user interface changes.
+        </p>
+        <p>
+          We examine how AI-enhanced self-healing can reduce failure frequency and improve long-term reliability in production automation systems.
+        </p>
+      </div>
 
-  <article class="about-card">
-    <h3>What Makes It Different</h3>
-    <p>
-      The framework does not rely on a single fallback selector. It evaluates multiple healing strategies in parallel, scores alternatives using machine-learning confidence, validates candidates through contextual signals, and returns structured healing decisions. This multi-strategy approach makes recovery more robust than static rule-only systems.
-    </p>
-  </article>
+      <div class="about-visual">
+        <div class="about-visual-content">
+          <div class="about-visual-title">Platform Metrics</div>
+          <div class="about-stat-row">
+            <div class="about-stat">
+              <strong class="about-stat-accent">94%</strong>
+              <span>Healing Success Rate</span>
+            </div>
+            <div class="about-stat">
+              <strong class="about-stat-accent-b">4.2×</strong>
+              <span>Less Downtime</span>
+            </div>
+            <div class="about-stat">
+              <strong style="color:#FFB84B">5</strong>
+              <span>Recovery Strategies</span>
+            </div>
+            <div class="about-stat">
+              <strong class="about-stat-accent">ML</strong>
+              <span>Confidence Scoring</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <article class="about-card">
-    <h3>Core Recovery Intelligence</h3>
-    <ul>
-      <li>Attribute similarity analysis across id, name, class, text, and tag changes</li>
-      <li>DOM structure matching to detect relocated or reshaped elements</li>
-      <li>XPath and CSS candidate regeneration from updated page context</li>
-      <li>Vision-assisted fallback using OpenCV template and edge matching</li>
-      <li>Confidence threshold gating to prevent unsafe auto-healing</li>
-    </ul>
-  </article>
+    <!-- Problem + Objectives -->
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Research Problem</h3>
+        <p>
+          Traditional RPA bots are highly sensitive to UI volatility. XPath or CSS locators that work today may fail tomorrow after frontend changes — causing repeated maintenance, downtime, and inefficiency. Ominifix addresses how to recover failed automation steps with high confidence, low risk, and minimal human intervention.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <h3>Research Objectives</h3>
+        <ol>
+          <li>Design a self-healing framework that detects and recovers broken locators.</li>
+          <li>Compare multiple healing strategies instead of one fallback rule.</li>
+          <li>Introduce ML confidence scoring for safer decisions.</li>
+          <li>Combine visual validation with DOM-based reasoning in one pipeline.</li>
+          <li>Evaluate hybrid healing resilience in practical RPA scenarios.</li>
+        </ol>
+      </div>
+    </div>
 
-  <article class="about-card">
-    <h3>How The Platform Operates</h3>
-    <ul>
-      <li>A failure event is captured from a running bot</li>
-      <li>Context is sent to healing services via structured API payloads</li>
-      <li>Strategies generate and score replacement locators</li>
-      <li>Best candidate is selected only when reliability criteria are met</li>
-      <li>Results are returned to orchestrator and monitoring layers</li>
-      <li>Execution continues with reduced manual intervention</li>
-    </ul>
-  </article>
-</div>
+    <!-- Methodology -->
+    <div class="method-section">
+      <div class="method-head">
+        <h3>Methodology</h3>
+        <p>Applied engineering with iterative experimentation under controlled UI-change conditions.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">Step 01</div>
+          <h4>Failure Simulation</h4>
+          <p>Injected attribute edits, text changes, structural shifts, and element relocation to reproduce realistic automation breakdowns.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">Step 02</div>
+          <h4>Candidate Generation</h4>
+          <p>Generated candidates through attribute similarity, DOM ancestry analysis, XPath/CSS reconstruction, and OpenCV visual matching.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">Step 03</div>
+          <h4>Reliability Estimation</h4>
+          <p>Applied ML confidence scoring with threshold gating to prevent unsafe, low-confidence healing actions.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">Step 04</div>
+          <h4>Orchestrated Recovery</h4>
+          <p>Returned structured healing outcomes through APIs for traceable orchestration, monitoring, and scalable integration.</p>
+        </div>
+      </div>
+    </div>
 
-<div class="about-band">
-  <div class="about-band-left">
-    <h3>Architecture Designed for Enterprise Automation</h3>
-    <p>
-      Ominifix is implemented as a microservice-driven framework to support modular growth and distributed execution. Components such as locator intelligence, healing logic, orchestration, monitoring, and QA services can evolve independently while sharing consistent contracts. This architecture supports maintainability, observability, and gradual adoption across automation teams.
-    </p>
+    <!-- Contributions + Insights -->
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 6v6l4 2"/></svg>
+        </div>
+        <h3>Research Contributions</h3>
+        <ol>
+          <li>Hybrid model combining DOM intelligence, visual matching, and ML confidence scoring.</li>
+          <li>Confidence-gated execution strategy that reduces unsafe auto-healing.</li>
+          <li>Service-oriented architecture for distributed healing and monitoring.</li>
+          <li>Evaluation-ready implementation for realistic automation pipelines.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+        <h3>Key Insights</h3>
+        <ol>
+          <li>Rule-only approaches are insufficient for unstable interfaces.</li>
+          <li>Visual signals improve robustness when DOM context is weak.</li>
+          <li>Confidence-based selection reduces false recovery attempts.</li>
+          <li>Structured orchestration is essential for production-scale adoption.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Scope + Future -->
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Current Scope &amp; Limitations</h3>
+        <p>
+          Ominifix currently focuses on web automation healing and representative failure patterns. Model quality depends on training coverage, and performance may vary for unfamiliar UI behaviors.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>Future Research Directions</h3>
+        <ol>
+          <li>Adaptive online learning from post-healing execution feedback.</li>
+          <li>Larger benchmark datasets across domains and UI frameworks.</li>
+          <li>Context-aware strategy weighting based on failure type prediction.</li>
+          <li>Stronger explainability for operator trust and audit reporting.</li>
+          <li>Support for cross-platform and desktop automation contexts.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Impact block -->
+    <div class="impact-block">
+      <h3>Research Impact</h3>
+      <p>
+        This research demonstrates that self-healing RPA can evolve from reactive script maintenance to proactive resilience engineering. Ominifix contributes toward reliable, scalable, and maintainable automation systems where bots adapt to change instead of failing on change.
+      </p>
+    </div>
+
   </div>
-  <div class="about-band-right">
-    <div class="stat">
-      <span class="stat-value">Hybrid</span>
-      <span class="stat-label">DOM + Vision + ML recovery model</span>
+</section>
+
+<!-- Milestones section -->
+<section id="milestones" class="milestones-section">
+  <div class="section-inner milestones-inner">
+    <div class="docs-header">
+      <div>
+        <div class="section-label">Milestones</div>
+        <h2 class="section-title">Project Milestones</h2>
+        <p class="section-sub">Assessment checkpoints, deliverables, and evaluation weights tracked through the project lifecycle.</p>
+      </div>
     </div>
-    <div class="stat">
-      <span class="stat-value">API-First</span>
-      <span class="stat-label">Service integration with structured JSON contracts</span>
-    </div>
-    <div class="stat">
-      <span class="stat-value">Scalable</span>
-      <span class="stat-label">Distributed orchestration for multiple bot workflows</span>
+
+    <div class="milestones-grid">
+      <article class="milestone-card">
+        <h3>Project Proposal (Presentation + Proposal Report)</h3>
+        <p class="milestone-date">March 2023</p>
+        <p class="milestone-mark">Mark Allocation - 12%</p>
+        <div class="milestone-tags"><span>Group</span><span>Individual</span></div>
+      </article>
+
+      <article class="milestone-card">
+        <h3>Progress Presentation - 1</h3>
+        <p class="milestone-date">May 2023</p>
+        <p class="milestone-mark">Mark Allocation - 15%</p>
+        <div class="milestone-tags"><span>Group</span><span>Individual</span></div>
+      </article>
+
+      <article class="milestone-card">
+        <h3>Research Paper Publication</h3>
+        <p class="milestone-date">June 2023</p>
+        <p class="milestone-mark">Mark Allocation - 10%</p>
+        <div class="milestone-tags"><span>Group</span></div>
+      </article>
+
+      <article class="milestone-card">
+        <h3>Final Reports (Thesis)</h3>
+        <p class="milestone-date">September 2023</p>
+        <p class="milestone-mark">Mark Allocation - 19%</p>
+        <div class="milestone-tags"><span>Group</span><span>Individual</span></div>
+      </article>
+
+      <article class="milestone-card">
+        <h3>Progress Presentation - 2</h3>
+        <p class="milestone-date">September 2023</p>
+        <p class="milestone-mark">Mark Allocation - 18%</p>
+        <div class="milestone-tags"><span>Group</span><span>Individual</span></div>
+      </article>
+
+      <article class="milestone-card">
+        <h3>Status Documents 1 &amp; 2</h3>
+        <p class="milestone-date">May and September 2023</p>
+        <p class="milestone-mark">Mark Allocation - 2%</p>
+        <div class="milestone-tags"><span>Individual</span></div>
+      </article>
+
+      <article class="milestone-card">
+        <h3>Log Books</h3>
+        <p class="milestone-date">October 2023</p>
+        <p class="milestone-mark">Mark Allocation - 2%</p>
+        <div class="milestone-tags"><span>Individual</span></div>
+      </article>
+
+      <article class="milestone-card">
+        <h3>Final Presentation + Viva</h3>
+        <p class="milestone-date">October 2023</p>
+        <p class="milestone-mark">Mark Allocation - 20%</p>
+        <div class="milestone-tags"><span>Group</span><span>Individual</span></div>
+      </article>
+
+      <article class="milestone-card">
+        <h3>Website Development</h3>
+        <p class="milestone-date">November 2023</p>
+        <p class="milestone-mark">Mark Allocation - 2%</p>
+        <div class="milestone-tags"><span>Group</span></div>
+      </article>
     </div>
   </div>
-</div>
+</section>
 
-<div class="about-principles">
-  <h3>Engineering Principles</h3>
-  <div class="principles-grid">
-    <div class="principle">
-      <h4>Reliability Over Guessing</h4>
-      <p>Every healing action is scored, validated, and controlled by thresholds to reduce risky selector substitutions.</p>
+<!-- Documentation section -->
+<section id="documentations" class="docs-section">
+  <div class="section-inner docs-inner">
+    <div class="docs-header">
+      <div>
+        <div class="section-label">Documents</div>
+        <h2 class="section-title">Project Documents</h2>
+        <p class="section-sub">Core project documents, research records, and submission materials collected in one place.</p>
+      </div>
     </div>
-    <div class="principle">
-      <h4>Explainable Decisions</h4>
-      <p>Recovery outputs are structured with reasoning signals to support debugging, auditability, and team trust.</p>
-    </div>
-    <div class="principle">
-      <h4>Production Practicality</h4>
-      <p>Built for real automation pipelines with monitoring visibility, service integration, and operational resilience.</p>
-    </div>
-    <div class="principle">
-      <h4>Continuous Improvement</h4>
-      <p>Model-driven confidence and evaluation workflows enable data-informed improvements over time.</p>
+
+    <div class="docs-grid">
+      <article class="doc-card">
+        <div class="doc-icon doc-icon-blue" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 20h14V8l-5-5H5v17zm9-16 5 5h-5V4zM8 11h8v1.5H8V11zm0 3.5h8V16H8v-1.5z"/></svg>
+        </div>
+        <h3>Project Charter</h3>
+        <p>The document gives the information regarding the statement of scope, objectives, overview, and outline of scope, an approximate schedule and people who are participating in a project.</p>
+        <a href="#" class="doc-btn">Download</a>
+      </article>
+
+      <article class="doc-card">
+        <div class="doc-icon doc-icon-gold" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3c2.8 0 5 2.2 5 5 0 1.7-.8 3.2-2.1 4.1L16 18l-4-2-4 2 .1-5.9C6.8 11.2 6 9.7 6 8c0-2.8 2.2-5 5-5zm0 1.5A3.5 3.5 0 1 0 12 12a3.5 3.5 0 0 0 0-7z"/></svg>
+        </div>
+        <h3>Project Proposal</h3>
+        <p>The document contains details like goals, objectives, important dates, milestones and requirements needed to start and complete the project.</p>
+        <a href="#" class="doc-btn">Download</a>
+      </article>
+
+      <article class="doc-card">
+        <div class="doc-icon doc-icon-cyan" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 4h10l3 3v13H7V4zm2 2v13h9V8h-3V6H9zm1 3h6v1.5h-6V9zm0 3h6v1.5h-6V12zm0 3h4v1.5h-4V15z"/></svg>
+        </div>
+        <h3>Research Paper</h3>
+        <p>A research paper contains writing that provides literature review, research methodology, analysis, interpretation, and argument based on in-depth independent research.</p>
+        <a href="#" class="doc-btn">Download</a>
+      </article>
+
+      <article class="doc-card">
+        <div class="doc-icon doc-icon-green" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M6 3h12v18H6V3zm2 2v14h8V5H8zm1.5 2h5v1.5h-5V7zm0 3h5v1.5h-5V10zm0 3h3v1.5h-3V13z"/></svg>
+        </div>
+        <h3>Final Thesis</h3>
+        <p>The document contains the proposed solution to the research question, which was finalized after completing the research.</p>
+        <a href="#" class="doc-btn">Download</a>
+      </article>
+
+      <article class="doc-card">
+        <div class="doc-icon doc-icon-red" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 3h10v4h4v14H3V3h4zm2 2v2h6V5H9zm-4 4v10h14V9H5zm2 2h10v1.5H7V11zm0 3h6v1.5H7V14z"/></svg>
+        </div>
+        <h3>Status Document</h3>
+        <p>The document describes the progress of the project within the specific time period and compares it against the project plan checklist.</p>
+        <a href="#" class="doc-btn">Download</a>
+      </article>
+
+      <article class="doc-card">
+        <div class="doc-icon doc-icon-orange" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 3h10l4 4v14H7V3zm2 2v14h10V8h-3V5H9zm1 4h6v1.5h-6V9zm0 3h6v1.5h-6V12zm0 3h4v1.5h-4V15z"/></svg>
+        </div>
+        <h3>Research Logbook</h3>
+        <p>The document describes the progress of the project within the specific time period and compares it against the project plan checklist.</p>
+        <a href="#" class="doc-btn">Download</a>
+      </article>
+
+      <article class="doc-card">
+        <div class="doc-icon doc-icon-purple" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M6 4h9l3 3v13H6V4zm2 2v12h8V8h-3V6H8zm1 4h6v1.5H9V10zm0 3h6v1.5H9V13z"/></svg>
+        </div>
+        <h3>Business Plan</h3>
+        <p>Business plan is very valuable when it comes to commercializing the product to the real world market as an organization entity.</p>
+        <a href="#" class="doc-btn">Download</a>
+      </article>
     </div>
   </div>
-</div>
+</section>
 
-<div class="about-cta">
-  <h3>Our Mission</h3>
-  <p>
-    To transform fragile script-based automation into adaptive, self-healing digital workers that remain stable under constant UI change, helping organizations improve continuity, reduce maintenance cost, and scale RPA with confidence.
-  </p>
-  <a href="#contact" class="about-btn">Talk to Our Team</a>
-</div>
+<!-- Presentations section -->
+<section id="presentations" class="presentations-section">
+  <div class="section-inner presentations-inner">
+    <div class="docs-header">
+      <div>
+        <div class="section-label">Presentations</div>
+        <h2 class="section-title">Project Presentations</h2>
+        <p class="section-sub">Milestone presentation materials covering the research journey from proposal through final deployment.</p>
+      </div>
+    </div>
+
+    <div class="presentations-grid">
+      <article class="presentation-card">
+        <div class="presentation-badge">01</div>
+        <h3>Proposal Presentation</h3>
+        <p>Initial Presentation with Overview of Research Problem</p>
+        <a href="#" class="presentation-btn">View Presentation</a>
+      </article>
+
+      <article class="presentation-card">
+        <div class="presentation-badge">02</div>
+        <h3>Progress Presentation - 1</h3>
+        <p>50% Project Completion</p>
+        <a href="#" class="presentation-btn">View Presentation</a>
+      </article>
+
+      <article class="presentation-card">
+        <div class="presentation-badge">03</div>
+        <h3>Progress Presentation - 2</h3>
+        <p>90% Project Completion</p>
+        <a href="#" class="presentation-btn">View Presentation</a>
+      </article>
+
+      <article class="presentation-card presentation-card-final">
+        <div class="presentation-badge">04</div>
+        <h3>Final Presentation</h3>
+        <p>100% Completion with Deployed Solution</p>
+        <a href="#" class="presentation-btn">View Presentation</a>
+      </article>
+    </div>
+  </div>
 </section>
 
 <!-- ─── FOOTER ─── -->
@@ -142,20 +1078,20 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <a class="logo" href="#" style="margin-bottom:0.75rem;display:inline-flex">
+        <a class="logo" href="#">
           <div class="logo-mark">
             <svg viewBox="0 0 20 20" fill="white"><path d="M10 2L3 7v6l7 5 7-5V7L10 2zm0 2.3l5 3.5v4.4l-5 3.5-5-3.5V7.8L10 4.3z"/><circle cx="10" cy="10" r="2.2"/></svg>
           </div>
-          <span class="logo-name" style="margin-left:10px">Omini<span>fix</span></span>
+          <span class="logo-name">Omini<em>fix</em></span>
         </a>
         <p>An AI-enhanced self-healing RPA framework that detects UI changes, recovers broken locators, and keeps bots running with minimal human intervention.</p>
       </div>
       <div class="footer-col">
         <h4>Product</h4>
         <ul>
-          <li><a href="#capabilities">Capabilities</a></li>
-          <li><a href="#architecture">Architecture</a></li>
-          <li><a href="#showcase">Dashboard</a></li>
+          <li><a href="#">Capabilities</a></li>
+          <li><a href="#">Architecture</a></li>
+          <li><a href="#">Dashboard</a></li>
           <li><a href="#">Changelog</a></li>
           <li><a href="#">Roadmap</a></li>
         </ul>
@@ -183,27 +1119,16 @@
     </div>
     <div class="footer-bottom">
       <span>© 2025 Ominifix. All rights reserved.</span>
-      <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--ink-3)">v2.1.0 · Self-Healing RPA Framework</span>
+      <span class="footer-version">v2.1.0 · Self-Healing RPA Framework</span>
     </div>
   </div>
 </footer>
 
 <script>
-function setActive(el,idx){
-  document.querySelectorAll('.cap-item').forEach(i=>i.classList.remove('active'));
-  el.classList.add('active');
-}
-
-const nav = document.querySelector('nav');
-
-function syncNavbarOnScroll(){
-  if(!nav) return;
-  nav.classList.toggle('scrolled', window.scrollY > 24);
-}
-
-window.addEventListener('scroll', syncNavbarOnScroll, { passive:true });
-window.addEventListener('load', syncNavbarOnScroll);
-syncNavbarOnScroll();
+const nav = document.getElementById('main-nav');
+function syncNav(){nav.classList.toggle('scrolled', scrollY > 20)}
+addEventListener('scroll', syncNav, {passive:true});
+syncNav();
 </script>
 </body>
 </html>
