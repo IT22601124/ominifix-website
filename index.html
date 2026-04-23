@@ -651,7 +651,6 @@ footer{
 
       <div class="hero-actions">
         <a href="#" class="btn btn-primary" style="padding:13px 28px;font-size:1rem;border-radius:12px">Get Started</a>
-        <a href="#about" class="btn btn-ghost" style="padding:12px 26px;font-size:0.98rem;border-radius:12px">View Platform</a>
       </div>
 
       <div class="hero-tags">
@@ -723,119 +722,209 @@ footer{
   <div class="section-inner">
 
     <div class="domain-header">
-      <div class="section-label">Domain</div>
-      <h2>Domain</h2>
+      <div class="section-label">Research Context</div>
+      <h2 class="section-title">Research Domain</h2>
+      
     </div>
 
-    <!-- Literature Survey -->
+    <!-- Research Content -->
     <div class="domain-content">
-      <div class="domain-item">
-        <h3>Literature Survey</h3>
-        <div class="literature-content">
-          <div class="literature-section">
-            <h4>RPA Evolution & Challenges</h4>
-            <p>
-              Robotic Process Automation (RPA) has evolved from simple screen scraping tools to sophisticated enterprise automation platforms. Research by Gartner (2023) indicates that RPA adoption has grown exponentially, with global market value projected to reach $25 billion by 2026. However, studies reveal that 30-50% of RPA implementations fail within the first year due to UI volatility and maintenance overhead.
-            </p>
-            <p>
-              Key challenges identified in literature include: dynamic web interfaces, frequent UI updates, cross-browser compatibility issues, and the lack of intelligent adaptation mechanisms. Traditional RPA tools rely on brittle XPath/CSS selectors that break with minor interface changes, leading to significant operational costs.
-            </p>
+      
+      <!-- 1. LITERATURE SURVEY -->
+      <div class="research-block research-literature">
+        <div class="research-block-header">
+          <h3>1. Literature Survey</h3>
+          <p>Comprehensive analysis of RPA evolution, self-healing approaches, and research findings from industry and academia.</p>
+        </div>
+        
+        <div class="lit-sections">
+          <div class="lit-major-section">
+            <h4>RPA Evolution & Market Context</h4>
+            <p>Robotic Process Automation (RPA) has evolved from simple screen scraping tools to sophisticated enterprise automation platforms. Research by Gartner (2023) indicates exponential adoption growth, with global market value projected to reach $25 billion by 2026.</p>
+            <p><strong>Critical Challenge:</strong> Studies reveal that 30-50% of RPA implementations fail within the first year due to UI volatility and maintenance overhead. Traditional RPA tools rely on brittle XPath/CSS selectors that break with minor interface changes, leading to significant operational costs.</p>
           </div>
 
-          <div class="literature-section">
-            <h4>Self-Healing Approaches</h4>
-            <p>
-              Self-healing automation research spans multiple domains: AI-driven locator regeneration, visual recognition systems, and machine learning-based adaptation. Microsoft's Power Automate and UiPath's AI capabilities represent industry implementations, while academic research focuses on theoretical frameworks.
-            </p>
-            <ul>
-              <li><strong>DOM-based Healing:</strong> Research by van der Aalst et al. (2022) explores semantic DOM analysis for robust element identification</li>
-              <li><strong>Visual Recognition:</strong> Computer vision approaches using OpenCV and deep learning for template matching (Chen et al., 2023)</li>
-              <li><strong>Hybrid Methods:</strong> Combined DOM and visual strategies showing 85-95% success rates in controlled environments</li>
-              <li><strong>ML Confidence Scoring:</strong> Bayesian and neural network approaches for healing decision confidence (Rodriguez et al., 2024)</li>
+          <div class="lit-major-section">
+            <h4>Self-Healing Automation Approaches</h4>
+            <p>Self-healing automation research spans multiple domains: AI-driven locator regeneration, visual recognition systems, and machine learning-based adaptation. Industry implementations by Microsoft Power Automate and UiPath's AI capabilities represent current state-of-the-art, while academic research explores theoretical frameworks.</p>
+            <div class="healing-approaches">
+              <div class="approach-item">
+                <strong>DOM-based Healing:</strong>
+                <p>Research by van der Aalst et al. (2022) explores semantic DOM analysis for robust element identification</p>
+              </div>
+              <div class="approach-item">
+                <strong>Visual Recognition:</strong>
+                <p>Computer vision approaches using OpenCV and deep learning for template matching (Chen et al., 2023)</p>
+              </div>
+              <div class="approach-item">
+                <strong>Hybrid Methods:</strong>
+                <p>Combined DOM and visual strategies showing 85-95% success rates in controlled environments</p>
+              </div>
+              <div class="approach-item">
+                <strong>ML Confidence Scoring:</strong>
+                <p>Bayesian and neural network approaches for healing decision confidence (Rodriguez et al., 2024)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lit-major-section">
+            <h4>Key Research Findings</h4>
+            <p>Meta-analysis of 50+ studies reveals critical insights:</p>
+            <ul class="findings-list">
+              <li><strong>Success Rates:</strong> Single-strategy approaches achieve only 60-70% healing success rates, while hybrid methods combining multiple techniques reach 90%+</li>
+              <li><strong>Visual Signals:</strong> Prove particularly effective when DOM context is insufficient for reliable identification</li>
+              <li><strong>Confidence Gating:</strong> Threshold-based decision making prevents 40% of unsafe healing attempts</li>
+              <li><strong>Financial Impact:</strong> Organizations lose an average of $1.2M annually per RPA bot due to maintenance, with self-healing capabilities reducing this by 60-80%</li>
+            </ul>
+            <p style="margin-top: 1rem; color: #2A3A5B;"><em>However, current solutions lack production-grade orchestration and monitoring frameworks for enterprise deployment.</em></p>
+          </div>
+
+          <div class="lit-major-section">
+            <h4>Research Gaps & Emerging Opportunities</h4>
+            <p>Literature identifies critical gaps in current solutions:</p>
+            <ul class="findings-list">
+              <li>Absence of standardized evaluation frameworks for healing effectiveness</li>
+              <li>Limited real-world validation across diverse industry domains</li>
+              <li>Lack of service-oriented architectures for distributed, scalable healing</li>
+              <li>Insufficient production monitoring and traceability mechanisms</li>
+            </ul>
+            <p style="margin-top: 1rem;"><strong>Emerging Research Focus:</strong> Online learning systems, context-aware strategy selection, explainable AI for operational trust, and integration with modern DevOps practices for continuous automation maintenance.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. RESEARCH GAP -->
+      <div class="research-block research-gap-section">
+        <div class="research-block-header">
+          <h3>2. Research Gap</h3>
+          <p>Identification of missing components in current literature and solutions.</p>
+        </div>
+        <div class="gap-content">
+          <p>While individual healing strategies exist (XPath regeneration, visual matching, ML-based approaches), there is a <strong>critical absence of comprehensive frameworks</strong> that combine multiple recovery methods with confidence-based decision making.</p>
+          
+          <div class="gap-details">
+            <h4>Missing Elements:</h4>
+            <ul class="gap-items">
+              <li><strong>Integrated Multi-Strategy Framework:</strong> Current solutions lack unified approaches combining DOM, visual, and ML techniques</li>
+              <li><strong>Production-Ready Architecture:</strong> Academic solutions rarely include orchestration, monitoring, and traceability for enterprise deployment</li>
+              <li><strong>Confidence-Gated Decision Making:</strong> Absence of safety mechanisms to prevent unsafe automation recovery</li>
+              <li><strong>Standardized Evaluation Metrics:</strong> No common benchmarks for comparing healing effectiveness across solutions</li>
+              <li><strong>Service-Oriented Design:</strong> Lack of distributed, scalable architectures for large-scale automation deployments</li>
             </ul>
           </div>
 
-          <div class="literature-section">
-            <h4>Key Research Findings</h4>
-            <p>
-              Meta-analysis of 50+ studies reveals critical insights: single-strategy approaches achieve only 60-70% healing success rates, while hybrid methods combining multiple techniques reach 90%+. Visual signals prove particularly effective when DOM context is insufficient, and confidence-based gating prevents 40% of unsafe healing attempts.
-            </p>
-            <p>
-              Industry surveys (Deloitte, 2023) show that organizations lose an average of $1.2M annually per RPA bot due to maintenance, with self-healing capabilities reducing this by 60-80%. However, current solutions lack production-grade orchestration and monitoring frameworks.
-            </p>
+          <p style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(24,71,214,0.1);"><strong>The Research Gap:</strong> Hybrid models integrating DOM intelligence, visual signals, and ML confidence scoring in a <em>production-ready architecture</em> are missing from current literature.</p>
+        </div>
+      </div>
+
+      <!-- 3. RESEARCH PROBLEM -->
+      <div class="research-block research-problem-section">
+        <div class="research-block-header">
+          <h3>3. Research Problem</h3>
+          <p>Definition of the core challenge being addressed.</p>
+        </div>
+        <div class="problem-content">
+          <p><strong>Traditional RPA bots are highly sensitive to UI volatility.</strong> XPath or CSS locators that work today may fail tomorrow after frontend changes, causing repeated maintenance cycles, downtime, and operational inefficiency.</p>
+          
+          <div class="problem-statement">
+            <h4>Problem Statement:</h4>
+            <p>How to reliably recover from UI-induced automation failures with high confidence, low risk, and minimal human intervention?</p>
           </div>
 
-          <div class="literature-section">
-            <h4>Research Gaps & Opportunities</h4>
-            <p>
-              Literature identifies critical gaps: absence of standardized evaluation frameworks, limited real-world validation, and lack of service-oriented architectures for distributed healing. Emerging research focuses on online learning, context-aware strategy selection, and explainable AI for operational trust.
-            </p>
-            <p>
-              Future directions include adaptive systems that learn from execution feedback, multi-modal healing combining DOM, visual, and behavioral signals, and integration with modern DevOps practices for continuous automation maintenance.
-            </p>
+          <div class="problem-details">
+            <h4>Key Challenges:</h4>
+            <ul class="problem-items">
+              <li><strong>Dynamic UI Changes:</strong> Frequent interface updates break existing locators and require manual repair</li>
+              <li><strong>Maintenance Overhead:</strong> Organizations spend 40-60% of RPA team time on maintenance rather than development</li>
+              <li><strong>Safety Concerns:</strong> Automated recovery attempts may take incorrect actions without proper validation</li>
+              <li><strong>Scalability:</strong> Manual intervention doesn't scale for thousands of bots across enterprises</li>
+              <li><strong>Cost Impact:</strong> Average of $1.2M annually per bot lost due to downtime and maintenance</li>
+            </ul>
           </div>
         </div>
       </div>
 
-      <!-- Research Gap -->
-      <div class="domain-item">
-        <h3>Research Gap</h3>
-        <p>
-          While individual healing strategies exist (XPath regeneration, visual matching, ML-based approaches), there is a lack of comprehensive frameworks that combine multiple recovery methods with confidence-based decision making. Current solutions often rely on single fallback rules without considering execution safety or providing structured orchestration for production environments.
-        </p>
-        <p>
-          The gap lies in the absence of hybrid models that integrate DOM intelligence, visual signals, and ML confidence scoring in a production-ready architecture that can safely recover from diverse UI failure patterns.
-        </p>
-      </div>
-
-      <!-- Research Problem -->
-      <div class="domain-item">
-        <h3>Research Problem</h3>
-        <p>
-          Traditional RPA bots are highly sensitive to UI volatility. XPath or CSS locators that work today may fail tomorrow after frontend changes — causing repeated maintenance, downtime, and inefficiency. Ominifix addresses how to recover failed automation steps with high confidence, low risk, and minimal human intervention.
-        </p>
-      </div>
-
-      <!-- Research Objectives -->
-      <div class="domain-item">
-        <h3>Research Objectives</h3>
-        <ol>
-          <li>Design a self-healing framework that detects and recovers broken locators.</li>
-          <li>Compare multiple healing strategies instead of one fallback rule.</li>
-          <li>Introduce ML confidence scoring for safer decisions.</li>
-          <li>Combine visual validation with DOM-based reasoning in one pipeline.</li>
-          <li>Evaluate hybrid healing resilience in practical RPA scenarios.</li>
-        </ol>
-      </div>
-
-      <!-- Methodology -->
-      <div class="domain-item">
-        <h3>Methodology</h3>
-        <p>Applied engineering with iterative experimentation under controlled UI-change conditions.</p>
-        <div class="methodology-steps">
-          <div class="step">
-            <strong>Step 01: Failure Simulation</strong>
-            <p>Injected attribute edits, text changes, structural shifts, and element relocation to reproduce realistic automation breakdowns.</p>
+      <!-- 4. RESEARCH OBJECTIVES -->
+      <div class="research-block research-objectives">
+        <div class="research-block-header">
+          <h3>4. Research Objectives</h3>
+          <p>Five core objectives driving our self-healing framework research.</p>
+        </div>
+        <div class="objectives-grid">
+          <div class="objective">
+            <span class="obj-num">01</span>
+            <h4>Framework Design</h4>
+            <p>Build a systematic self-healing framework that detects and recovers broken locators.</p>
           </div>
-          <div class="step">
-            <strong>Step 02: Candidate Generation</strong>
-            <p>Generated candidates through attribute similarity, DOM ancestry analysis, XPath/CSS reconstruction, and OpenCV visual matching.</p>
+          <div class="objective">
+            <span class="obj-num">02</span>
+            <h4>Multi-Strategy Comparison</h4>
+            <p>Evaluate multiple healing approaches instead of single fallback rules.</p>
           </div>
-          <div class="step">
-            <strong>Step 03: Reliability Estimation</strong>
-            <p>Applied ML confidence scoring with threshold gating to prevent unsafe, low-confidence healing actions.</p>
+          <div class="objective">
+            <span class="obj-num">03</span>
+            <h4>ML Confidence Scoring</h4>
+            <p>Implement confidence-based decision making for safer automation recovery.</p>
           </div>
-          <div class="step">
-            <strong>Step 04: Orchestrated Recovery</strong>
-            <p>Returned structured healing outcomes through APIs for traceable orchestration, monitoring, and scalable integration.</p>
+          <div class="objective">
+            <span class="obj-num">04</span>
+            <h4>Hybrid Integration</h4>
+            <p>Combine visual signals with DOM reasoning in unified recovery pipeline.</p>
+          </div>
+          <div class="objective">
+            <span class="obj-num">05</span>
+            <h4>Production Validation</h4>
+            <p>Test resilience against practical RPA scenarios with real-world complexity.</p>
           </div>
         </div>
       </div>
 
-      <!-- Technologies Used -->
-      <div class="domain-ite">
-        <h3 >Technologies Used</h3>
-        <div class="tech-showcase">
+      <!-- 5. METHODOLOGY -->
+      <div class="research-block research-methodology">
+        <div class="research-block-header">
+          <h3>5. Methodology</h3>
+          <p>Four-phase applied engineering approach with controlled experimentation.</p>
+        </div>
+        <div class="methodology-flow">
+          <div class="phase">
+            <div class="phase-marker">Phase 1</div>
+            <h4>Failure Simulation</h4>
+            <p>Systematically inject UI mutations—attribute changes, structural shifts, element relocation—to reproduce realistic breakdowns.</p>
+          </div>
+          <div class="phase-divider"></div>
+          <div class="phase">
+            <div class="phase-marker">Phase 2</div>
+            <h4>Candidate Generation</h4>
+            <p>Generate recovery candidates through DOM analysis, XPath/CSS reconstruction, and OpenCV visual matching.</p>
+          </div>
+          <div class="phase-divider"></div>
+          <div class="phase">
+            <div class="phase-marker">Phase 3</div>
+            <h4>Confidence Assessment</h4>
+            <p>Apply ML-based scoring with threshold gating to filter unsafe, low-confidence recovery attempts.</p>
+          </div>
+          <div class="phase-divider"></div>
+          <div class="phase">
+            <div class="phase-marker">Phase 4</div>
+            <h4>Orchestrated Recovery</h4>
+            <p>Return structured outcomes through APIs for traceable orchestration, monitoring, and scalable integration.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── TECH STACK ─── -->
+<section id="tech-stack" class="tech-stack-section">
+  <div class="section-inner">
+    <div class="tech-header">
+      <div class="section-label">Technologies</div>
+      <h2 class="section-title">6. Technologies Used</h2>
+      <p class="section-sub">Enterprise-grade tools powering self-healing automation.</p>
+    </div>
+    <div class="tech-showcase">
           <div class="tech-card" data-tech="opencv">
             <div class="tech-logo">
               <img src="images/logos/opencv.png" alt="OpenCV Logo" class="tech-logo-img">
@@ -1035,7 +1124,6 @@ footer{
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -1689,6 +1777,24 @@ navLinks.forEach((link) => {
 
 addEventListener('scroll', updateActiveNavOnScroll, {passive:true});
 updateActiveNavOnScroll();
+
+/* ────── SCROLL-TRIGGERED ANIMATIONS ────── */
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting && !entry.target.classList.contains('animate-in')) {
+      entry.target.classList.add('animate-in');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('section').forEach((section) => {
+  observer.observe(section);
+});
 </script>
 </body>
 </html>
