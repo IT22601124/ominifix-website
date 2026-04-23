@@ -373,6 +373,69 @@
 	margin-bottom:1rem;
 }
 
+.domain-tabs{
+	display:flex;
+	flex-wrap:wrap;
+	gap:0.65rem;
+	margin-bottom:2.7rem;
+	justify-content:flex-start;
+	padding:0.55rem;
+	background:linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(244,248,255,0.88) 100%);
+	border:1px solid rgba(24,71,214,0.08);
+	border-radius:20px;
+	box-shadow:0 14px 30px rgba(5,12,31,0.06);
+	backdrop-filter:blur(10px);
+}
+
+.domain-tab{
+	appearance:none;
+	border:1px solid transparent;
+	background:transparent;
+	color:#4A5A78;
+	font-family:var(--font-body);
+	font-size:0.9rem;
+	font-weight:700;
+	letter-spacing:0.01em;
+	padding:0.95rem 1.25rem;
+	border-radius:14px;
+	cursor:pointer;
+	transition:transform 0.24s ease, background-color 0.24s ease, color 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+	position:relative;
+	min-height:48px;
+}
+
+.domain-tab:hover{
+	transform:translateY(-1px);
+	background:rgba(255,255,255,0.78);
+	color:#1847D6;
+	box-shadow:0 10px 20px rgba(5,12,31,0.06);
+}
+
+.domain-tab.is-active{
+	background:linear-gradient(135deg, #1847D6 0%, #2F5CE0 100%);
+	color:#fff;
+	box-shadow:0 12px 26px rgba(24,71,214,0.26);
+	border-color:rgba(255,255,255,0.18);
+	transform:translateY(-1px);
+}
+
+.domain-tab:focus-visible{
+	outline:none;
+	box-shadow:0 0 0 3px rgba(24,71,214,0.18), 0 12px 26px rgba(24,71,214,0.18);
+}
+
+.domain-tab.is-active::after{
+	content:'';
+	position:absolute;
+	left:50%;
+	bottom:8px;
+	width:28px;
+	height:2px;
+	border-radius:99px;
+	background:rgba(255,255,255,0.9);
+	transform:translateX(-50%);
+}
+
 /* Domain Insights Cards */
 .domain-insights{
 	display:grid;
@@ -482,6 +545,10 @@
 	display:flex;
 	flex-direction:column;
 	gap:3rem;
+}
+
+.research-block.is-hidden{
+	display:none;
 }
 
 .research-block{
