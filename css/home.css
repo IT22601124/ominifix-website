@@ -1033,6 +1033,25 @@ nav ul li a:hover{color:#fff;background:rgba(255,255,255,0.1)}
 	box-shadow:0 16px 28px rgba(24,71,214,0.34);
 }
 
+.contact-submit:disabled{
+	cursor:not-allowed;
+	opacity:0.72;
+	transform:none;
+	box-shadow:0 8px 18px rgba(24,71,214,0.18);
+}
+
+.contact-status{
+	min-height:1.35rem;
+	margin-top:0.72rem;
+	font-size:0.82rem;
+	line-height:1.5;
+	color:#51617F;
+}
+
+.contact-status.is-sending{color:#1F51CD}
+.contact-status.is-success{color:#087A5A}
+.contact-status.is-error{color:#B42318}
+
 @media(max-width:1024px){
 	.presentations-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 	.presentations-section{padding:84px 1.5rem 76px}

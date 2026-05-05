@@ -1291,14 +1291,14 @@ footer{
         <a href="https://drive.google.com/drive/folders/1rs-zyeqvn27VrrlJdaPFtySSReZ4IC2x?usp=sharing" class="doc-btn">Download</a>
       </article>
 
-      <article class="doc-card">
+      <!-- <article class="doc-card">
         <div class="doc-icon doc-icon-red" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M7 3h10v4h4v14H3V3h4zm2 2v2h6V5H9zm-4 4v10h14V9H5zm2 2h10v1.5H7V11zm0 3h6v1.5H7V14z"/></svg>
         </div>
         <h3>Status Document</h3>
         <p>The document describes the progress of the project within the specific time period and compares it against the project plan checklist.</p>
         <a href="#" class="doc-btn">Download</a>
-      </article>
+      </article> -->
 
       <article class="doc-card">
         <div class="doc-icon doc-icon-orange" aria-hidden="true">
@@ -1309,14 +1309,14 @@ footer{
         <a href="#" class="doc-btn">Download</a>
       </article>
 
-      <article class="doc-card">
+      <!-- <article class="doc-card">
         <div class="doc-icon doc-icon-purple" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M6 4h9l3 3v13H6V4zm2 2v12h8V8h-3V6H8zm1 4h6v1.5H9V10zm0 3h6v1.5H9V13z"/></svg>
         </div>
         <h3>Business Plan</h3>
         <p>Business plan is very valuable when it comes to commercializing the product to the real world market as an organization entity.</p>
         <a href="#" class="doc-btn">Download</a>
-      </article>
+      </article> -->
 
       <article class="doc-card">
         <div class="doc-icon doc-icon-blue" aria-hidden="true">
@@ -1367,7 +1367,7 @@ footer{
         <div class="presentation-badge">04</div>
         <h3>Final Presentation</h3>
         <p>100% Completion with Deployed Solution</p>
-        <a href="#" class="presentation-btn">View Presentation</a>
+        <a href="presentations/Final P OMNIFIX RPA Self-Healing.pdf" class="presentation-btn" target="_blank" rel="noopener">View Presentation</a>
       </article>
     </div>
   </div>
@@ -1700,6 +1700,7 @@ footer{
         </div>
 
         <button type="submit" class="contact-submit">Send Message</button>
+        <p class="contact-status" role="status" aria-live="polite"></p>
       </form>
     </div>
   </div>
@@ -1747,11 +1748,67 @@ footer{
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 const nav = document.getElementById('main-nav');
 function syncNav(){nav.classList.toggle('scrolled', scrollY > 20)}
 addEventListener('scroll', syncNav, {passive:true});
 syncNav();
+
+const EMAILJS_PUBLIC_KEY = 'FoJFu_9EBXzK_7q7F';
+const EMAILJS_SERVICE_ID = 'service_nuocpsp';
+const EMAILJS_TEMPLATE_ID = 'template_6ji1buh';
+const emailJsIsConfigured = ![
+  EMAILJS_PUBLIC_KEY,
+  EMAILJS_SERVICE_ID,
+  EMAILJS_TEMPLATE_ID
+].some((value) => value.includes('_HERE'));
+
+if (window.emailjs && emailJsIsConfigured) {
+  emailjs.init({publicKey: EMAILJS_PUBLIC_KEY});
+}
+
+const contactForm = document.querySelector('.contact-form');
+const contactSubmit = contactForm?.querySelector('.contact-submit');
+const contactStatus = contactForm?.querySelector('.contact-status');
+
+function setContactStatus(message, type = ''){
+  if (!contactStatus) return;
+  contactStatus.textContent = message;
+  contactStatus.className = `contact-status ${type}`.trim();
+}
+
+if (contactForm && contactSubmit) {
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    if (!window.emailjs) {
+      setContactStatus('Email service is unavailable. Please try again later.', 'is-error');
+      return;
+    }
+
+    if (!emailJsIsConfigured) {
+      setContactStatus('EmailJS is not configured yet. Add your public key, service ID, and template ID in index.html.', 'is-error');
+      return;
+    }
+
+    contactSubmit.disabled = true;
+    contactSubmit.textContent = 'Sending...';
+    setContactStatus('Sending your message...', 'is-sending');
+
+    try {
+      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm);
+      contactForm.reset();
+      setContactStatus('Message sent successfully. We will get back to you soon.', 'is-success');
+    } catch (error) {
+      console.error('EmailJS send failed:', error);
+      setContactStatus('Could not send your message. Please email us directly.', 'is-error');
+    } finally {
+      contactSubmit.disabled = false;
+      contactSubmit.textContent = 'Send Message';
+    }
+  });
+}
 
 const navLinks = Array.from(document.querySelectorAll('nav ul li a[href^="#"]'));
 const navSections = navLinks
